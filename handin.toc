@@ -56,7 +56,6 @@
 \contentsline {section}{\numberline {6.2}Future Work}{72}{section.6.2}
 \contentsline {chapter}{\numberline {7}Conclusion}{74}{chapter.7}
 \contentsline {chapter}{List of Figures}{75}{chapter.7}
-\contentsline {chapter}{List of Algorithms}{76}{chapter*.53}
-\contentsline {chapter}{List of Tables}{76}{chapter*.54}
-\contentsline {chapter}{Acronyms}{77}{chapter*.55}
-\contentsline {chapter}{Bibliography}{77}{chapter*.55}
+\contentsline {chapter}{List of Algorithms}{77}{chapter*.54}
+\contentsline {chapter}{List of Tables}{79}{chapter*.56}
+\contentsline {chapter}{Bibliography}{80}{chapter*.58}

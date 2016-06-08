@@ -54,7 +54,7 @@
   \centering
   {Master thesis submitted in fulfilment of the requirements for the degree of M.Sc. Distributed Systems Engineering in the Chair of Computer Networks, Faculty of Computer Science.\par}
   \vspace{0.2cm}
-	{\large \today\par}
+	{\large June 9, 2016}
 \end{titlepage}
 
 \bibliographystyle{abbrv}
@@ -120,21 +120,34 @@ Following this chapter of introduction, the rest of this thesis is structured as
 
 \chapter{Conclusion}
 \label{chap:Conclusion}
+\input{Chapters/chapter7}
 
-\cleardoublepage
-% \phantomsection
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\itshape \nouppercase \rightmark}
+\fancyhead[LO,RE]{\itshape \nouppercase}
+\fancyfoot[CE,CO]{\thepage}
+
+\clearpage
+\pagestyle{plain}
 \addcontentsline{toc}{chapter}{\listfigurename}
+\chapter*{}
 \listoffigures
 
-\cleardoublepage
-% \phantomsection
+\clearpage
+\pagestyle{plain}
 \addcontentsline{toc}{chapter}{List of Algorithms}
+\chapter*{}
 \listofalgorithms
 
+\clearpage
+\pagestyle{plain}
 \addcontentsline{toc}{chapter}{\listtablename}
+\chapter*{}
 \listoftables
 
+
 \addcontentsline{toc}{chapter}{Bibliography}
+\chapter*{}
 \bibliography{handin}
 
 \end{document}
