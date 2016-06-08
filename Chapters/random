@@ -1,0 +1,7 @@
+\\
+\\
+To evaluate our approach and the AppElastic algorithm at large-scale, a simulation based mode, called ElasticSim, to implement the scalability components acting as the scalability components of Amazon EC2 is developed. ElasticSim is fed with workload trace from Citrix audio/video conferencing application. The results show that optimizing the scalability thresholds and adopting proactive scalability can mitigate the resource provisioning overhead with cost benefits.
+
+\\
+
+Based on the above mentioned classification, AppElastic algorithm developed in this thesis can be described as a customer oriented approach to elasticity which is a proactive automatic policy based Horizontal scaling mechanism. The purpose of AppElastic algorithm is to reduce cost and maintain the QoS for the users.

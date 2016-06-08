@@ -1,0 +1,16 @@
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Average VM startup times (From\cite {mao2012performance})\relax }}{4}{table.caption.8}
+\contentsline {table}{\numberline {1.2}{\ignorespaces Instance Pricing Option for c4.4xlarge Linux instance type (prices in USD)\relax }}{5}{table.caption.9}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Table of Forecast Strategies and their Properties (From\cite {herbst2012workload})\relax }}{23}{table.caption.15}
+\contentsline {table}{\numberline {3.2}{\ignorespaces Simulation Capabilities of Existing Cloud Simulator and PICS (Table taken from \cite {kim2015pics})\relax }}{26}{table.caption.16}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces List of input parameters to AppElastic algorithm\relax }}{31}{table.caption.17}
+\contentsline {table}{\numberline {4.2}{\ignorespaces List of out values from AppElastic algorithm\relax }}{31}{table.caption.18}
+\contentsline {table}{\numberline {4.3}{\ignorespaces List of input parameters to forecasting algorithm\relax }}{33}{table.caption.20}
+\contentsline {table}{\numberline {4.4}{\ignorespaces List of input parameters to AppElastic algorithm with lookahead\relax }}{36}{table.caption.22}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Fixed experiment parameters\relax }}{55}{table.caption.38}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

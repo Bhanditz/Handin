@@ -1,0 +1,135 @@
+This chapter is dedicated for reviewing the concepts and technologies that enables rapid scalability of applications in cloud computing environment. The chapter starts by defining the concept of cloud computing, then in Section~\ref{sec:SLA}, service level agreement (SLA) in general is introduced and what it means for this thesis is presented. In Section~\ref{sec:ScalableSystems} a general scalability architecture of a typical cloud hosted application is presented. Finally  a brief introduction is presented on the theory of Time series analysis that will be used in this thesis for workload forecasting.
+
+\section{Cloud Computing}
+\label{sec:Cloud Computing}
+Cloud computing\cite{mell2011nist} is a new paradigm for massively scalable systems and services. Cloud computing is an technology out of many foundational technologies especially networking, storage, virtualization, multi-tenant architecture, and distributed systems management. Cloud computing provides a broad array of web-services allowing users to access a wide range of capabilities on pay-as-you-go basis that previously required tremendous hardware and software investments.
+\\
+According to National Institute of Standards and Technology's NIST\cite{mell2011nist}, cloud computing is characterized by five essential characteristics, three service models.
+\\
+Five essential characteristics can be described as follows:
+\begin{enumerate}
+  \item On-demand \& self service: On-demand is an essential characteristic of cloud computing. Pay-as-you-go subscription models are associated with on-demand characteristic. Cloud computing provides its users computing power, storage, as needed without human interaction. Self-service of the On-demand service is offered through a dashboard that authorizes the users to control their resources. Cloud service providers allow its users to automate resource provisioning with application programming interfaces (APIs).
+  \item Broad network access: Cloud computing resources can be to accessed over a wide varsity of network protocols and various types of clients ( e.g., tables, mobile, laptop and workstations ).
+  \item Resource pooling: Cloud service providers offer their service, which is a pool of unassigned resources, to multiple customers in a multi-tenant model. The pool of resources is assigned and released based on the demand from customers.
+  \item Rapid elasticity: Cloud resources can be elastically procured and released, to scale rapidly up and down based on the customer demand. To customers, cloud service provider appear to have unlimited resource pool.
+  \item Measured service: Cloud service providers have the capability to monitor the cloud resources for better capacity planning, resource optimization and metering. Cloud service providers provides their customers capabilities to monitor the resource usage and control them.
+\end{enumerate}
+Three service models can be described as follows:
+\begin{enumerate}
+  \item Infrastructure as a Service (IaaS): Infrastructure cloud service providers offers to its customers capability to provision computing power, storage etc., in terms of VM's to deploy arbitrary software and operating system. Customer do not have access to underlying hardware infrastructure, but has controlled over operating system, storage and deployed application in the VM.
+  \item Platform as a Service (PaaS): PaaS providers offers its customers capability to host applications on their platform. PaaS platforms provide a application an development environment, database services, execution environment, and web hosting. PaaS customers do not have control over underlying cloud infrastructure which include network, servers, operating systems, or storage, but have control over the application deployed and its configuration settings.
+  \item Software as a Service (SaaS): SaaS providers offers its customers to use the application running on cloud infrastructure. The applications are accessed from various devices like web browser, table and mobile phone. The customers do not have control over the underlying cloud infrastructure, nor the individual application capabilities.
+\end{enumerate}
+
+\section{Service Level Agreement}
+\label{sec:SLA}
+SLA is a contract which defines the relationship between two parties: a service provider and its recipients. The contract describes the metrics by which the service quality are measured, and the penalties, if any, when agreed-upon service levels not achieved. Cloud hosted applications deals with two SLA contracts: First, SLA between cloud hosted application provider and cloud service providers. Second, between cloud hosted application provider and its customers. The SLA between cloud hosted application provider and cloud service providers is out of scope of this thesis. This thesis deals with SLA between cloud hosted application provider and its customers. This SLA is usually defined in terms of metrics by which the service is measured, for example, the response time, service availability etc., as quality of service (QoS) metrics.
+\\
+Service level objective (SLO) is specific measurable characteristic of the SLA such as availability, throughput, response time, or quality, used by the cloud hosted application to achieve the agreed SLA.
+\section{Scalability of Applications}
+\label{sec:ScalableSystems}
+Scalability is the systems capability to accommodate the growing workload\footnote{\url{https://en.wikipedia.org/wiki/Scalability}}. Scalability is critical to the success of many organizations hosting application in cloud environment. An application can be scaled by adding or removing resources when needed. Scalable applications are capable of providing agreed-upon quality of service to meet the SLA on varying workloads.
+\\
+At a high level, resource can be added/removed using two methods:
+\begin{itemize}
+  \item \textbf{Horizontal scalability (scale in/out)} to add or remove VM instances to the system. An example might be to add more app server instances\cite{galante2012survey}.
+  \item \textbf{Vertical scalability (scale up/down)} to add or remove resource like CPU, memory, network etc., to a single machine or VM\cite{galante2012survey}.
+\end{itemize}
+A typical scalable architecture of a cloud hosted application\cite{chieu2009dynamic} is illustrated in the Figure~\ref{figure:scalingarch}. The architecture design includes a front-end load balancer, an array of application servers with database servers, and a resource monitor with dynamic scaling algorithm. Use of load balancer such as Apache HTTP Load Balancer\footnote{https://httpd.apache.org/docs/2.4/mod/mod\_proxy\_balancer.html} will route user requests to application servers running as virtual machines. Load balancer has capability to dynamically add new application server instances. The application server enable the system to scale and provide better quality of service. The resource monitor is responsible for acquiring various application performance statistics, called as scaling indicator\cite{chieu2011dynamic}, which will be used by scaling algorithm to trigger and control scale-up or down the number of virtual machine instances. Before the emergence of cloud computing, scaling application is carried out by adding more physical servers to solve the problem of overload, which is a time consuming process. The emergence of cloud computing, starting more VM instances on-demand is in few seconds. Started instances are charged based on pay-as-you-go model, which helps in reducing the cost.
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.5]{scalingarch.png}
+    \caption{Typical architecture of scalable applications in cloud(From\cite{chieu2009dynamic})}
+    \label{figure:scalingarch}
+  \end{center}
+\end{figure}
+
+\section{Time series Analysis}
+\label{sec:Timeseries}
+Understanding the nature of application workload is crucial in designing and provisioning current and future VM instances. Workloads on the application are often driven by repeatable business behavior and exhibit temporal and spatial correlations. Application workloads behave in frequent and repeatable patterns. Such behavior patterns make some workload variations predictable\cite{mao2011auto}. Time Series Analysis techniques are used to identify patterns in temporal data (know as time series), using methods such as smoothing and curve fitting, and autocorrelation\cite{timeseriesdefinition}. In the following subsections, first review techniques used to identify patterns in time series data, and then general class of models that can be used to represent time series data and generate predictions are introduced.
+\subsection{Time series Data}
+\label{sub:Timeseriesdata}
+Time series data is sequences of measurements that follow non-random orders\cite{shumway2006time}. Unlike the analyses of random samples of observations that are used in general statistics, the analysis of time series is based on the assumption that successive values in the data represent consecutive measurements taken at equally spaced time intervals. A number of different notations are in use for time-series analysis. A common notation specifying a time series \(X_{t}\) that is indexed by the natural numbers\cite{timeseriesdefinition}:
+\begin{equation}
+  X_{t}={X_{1},X_{2}, ...}
+\end{equation}
+\\
+Two main goals of time series analysis are as follows:
+\begin{enumerate}
+  \item Identifying the nature of the phenomenon represented by the sequence of observations.
+  \item Forecasting, predicting future values of the time series variable.
+\end{enumerate}
+Both of these goals require the pattern of observed time series data to be identified and formally described. Once the pattern is identified it can be used to predict future events. In order to successfully achieve these tasks it is necessary to assume a-priori structure of the time series. If \(X_{t}\) is completely arbitrary random variables, then \(X_{1},.....,X_{n}\) constitute a single observation from a completely unknown distribution on \(\mathbb{R}^n\)\cite{timeseriesdefinition}. Drawing conclusion about these random series is impossible. Hence, the structure of the time series is assumed to be stationary. Stationary series does not change when shifted in time. Consequently, parameters such as the mean and variance, if they are present, also do not change over time\footnote{https://en.wikipedia.org/wiki/Stationary\_process}.
+\theoremstyle{definition}
+\begin{definition}{}
+The time series \(X_{t}\) is strictly stationary\cite{timeseriesdefinition} if the distribution of the vector \((X_{t},X_{t+1},...,X_{t+k})\) is independent of \(t\) for every \(k \in \mathbb{N}\).
+\end{definition}
+
+\begin{definition}{}
+A time series is said to be weakly stationary\cite{timeseriesdefinition} if:
+\begin{enumerate}
+  \item \(mean(X_{t}) = \mu\)
+  \item \(Covariance( X_{t},X_{t+k}) = \gamma_{k} \)
+\end{enumerate}
+where \(\mu\) is constant and \(\gamma_{k}\) is independent of \(t\).
+\end{definition}
+\begin{definition}{}
+The sequence \((X_{1},X_{2},....,X_{t})\), consisting of independent (or uncorrelated\footnote{If \(Covariance(X_{t}, t ) = 0\), we say that \(X_{t}\) and \(t\) are uncorrelated}) random variables with mean 0 and variance \(\sigma^2\) is called White noise.
+\end{definition}
+
+\subsection{ARIMA}
+\label{sub:ARIMA}
+ Autoregressive integrated moving average (ARIMA)\cite{box2015time} model is a generalization of an autoregressive moving average (ARMA)\cite{whitle1951hypothesis} model. To understand ARIMA, concept of ARMA has to be defined first.
+\subsubsection{ARMA}
+\label{subs:ARMA}
+Linear regression models attempt to explain a variable by the sum of a linear function of explanatory variables and a noise variable. ARMA processes are a time series version of linear regression, where the explanatory variables are the past values of the time series and the added noise is a moving average process.
+
+The autoregressive process of order \(p\) is denoted \(AR(p)\), and defined by\cite{timeseriesdefinition}:
+\begin{equation}
+  X_{t} = \sum_{r=1}^{p} \phi_{r} X_{t-r} + \epsilon_{t}
+\end{equation}
+
+where \(\phi_{1},...,\phi_{r}\) are fixed constants, and the sequence \(\epsilon_{t}\) is  independent (or uncorrelated) random variables with mean 0 and variance \(\sigma^2\).
+
+The AR process order 1 i.e \(AR(1)\), is defined as\cite{timeseriesdefinition}:
+\begin{equation}
+  X_{t} = \phi_{1} X_{t-1} + \epsilon_{t}
+\end{equation}
+
+The moving average process of order \(q\) is denoted \(MA(q)\) and defined by\cite{timeseriesdefinition}:
+
+\begin{equation}
+  X_{t} = \sum_{s=0}^{q} \theta_{s} \epsilon_{t-s}
+\end{equation}
+
+where \(\theta_{1},\theta_{2},...,\theta_{q}\) are fixed constants and \(\theta_{0}=1\), and the sequence \(\epsilon_{t-s}\) is a independent random variables with mean 0 and variance \(\sigma^2\).
+
+Based on $AR$ and $MA$ process defined above, the autoregression moving average process, \(ARMA(p,q)\) is defined as\cite{timeseriesdefinition}:
+\begin{equation}
+  X_{t} -  \sum_{r=1}^{p} \phi_{r} X_{t-r} = \sum_{s=0}^{q} \theta_{s} \epsilon_{t-s}
+\end{equation}
+where again $\epsilon_{t} $ is white noise\cite{timeseriesdefinition}. This process is stationary for appropriate $\theta,\phi$.
+
+Before defining ARIMA, the concept of differencing should be defined. Differencing is a method to transform a non-stationary time series into a stationary one. This method is particularly studied in combination with ARMA modeling. Differencing is defined as\cite{timeseriesdefinition}:
+\begin{equation}
+  X_{t} = \nabla Y_{t} = Y_{t} - Y_{t-1}
+\end{equation}
+where the non-stationary series $Y_{t}$ is transformed to stationary by applying successive differencing operation. Order of differencing $d$ is the number of successive differencing operation applied and is denoted as $\nabla^d$\cite{timeseriesdefinition}.
+
+ARIMA process is defined as\cite{timeseriesdefinition}:
+\begin{definition}{}
+A time series $X_{t}$ is an $ARIMA(p,d,q)$ process if $\nabla^d X_{t}$ is a stationary $ARMA(p,q)$ process.
+\end{definition}
+
+In other words, the time series $X_{t}$ is an $ARIMA(p,d,q)$ process if there exist polynomials $\phi,\theta$ of degree $p,q$ and a white noise series $\epsilon_{t}$ such that the time series $\nabla^d X_{t}$ is stationary\cite{timeseriesdefinition}. Additional ``I'' in $ARIMA$ is for integrated, hence $ARIMA$ process is called as integrated ARMA process.
+
+Identification, Estimation and Forecast forms main goals of $ARIMA$ modeling. This process are summarized below:
+\begin{enumerate}
+  \item Identification: The input series for ARIMA needs to be stationary, that is, it should have a constant mean, variance, and autocorrelation through time. To possibly identify a $ARIMA$ model that the series transformations into a stationary series. At this stage autoregressive $p$ and moving average $q$ order in ARMA model for the stationary series are identified. In practice, the values of the $p$ or $q$ parameters will not be greater than 2.
+ \item Estimation and Forecasting: In Estimation process, the parameters are estimated, so that the sum of squared residuals is minimized. The estimation process is performed on transformed data. The estimates of the order are used in the Forecasting to calculate new values of the series and confidence intervals for those predicted values are calculated. Before the forecasts are generated, the series needs to be integrated so that the forecasts are expressed in values compatible with the input series.
+\end{enumerate}
+$ARIMA$ modeling process can be automated using various software modeling tools that apply methodology like Box-Jenkins method to find the right order for the $ARIMA$ model. R the software environment for statistical computing includes an \(arima\) function, which is used to fits an $ARIMA$ model to a univariate time series. The forecast package in R can automatically select an ARIMA model from models fitted by \(auto.arima()\) function for a input time series. The forecasted time series will include predicted values and standard errors (se). In this thesis, ARIMA forecasting techniques are employed for predicting future workload to proactively scale cloud hosted applications.
+\section{Summary}
+\label{sec:Summary}
+Section~\ref{sec:Cloud Computing} introduced the basic definition of cloud computing and its service models. In section~\ref{sec:SLA}, SLA was formally defined. Section~\ref{sec:ScalableSystems} defined scalability of cloud hosted systems and depicted typical scalable applications in cloud in Figure~\ref{figure:scalingarch}.
+Section~\ref{sec:Timeseries}, formally defined the concept of time series analysis and ARIMA process. At the end of this chapter it was defined how ARIMA process is used to generate forecasts.

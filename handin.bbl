@@ -1,0 +1,283 @@
+\begin{thebibliography}{10}
+
+\bibitem{AmazonAutoScale}
+{Amazon Auto Scale EC2}.
+\newblock \url{https://aws.amazon.com/autoscaling/}.
+\newblock Accessed: 2015-05-22.
+
+\bibitem{Azurewatch}
+{AzureWatch}.
+\newblock \url{http://www.paraleap.com/azurewatch}.
+\newblock Accessed: 2015-05-22.
+
+\bibitem{AlexanderSim}
+{Cloud Simulators for Research and Development}.
+\newblock
+  \url{http://alexpucher.com/blog/2015/07/20/cloud-simulators-for-reasearch-and-development/}.
+\newblock Accessed: 2015-05-22.
+
+\bibitem{Cloudsim}
+{Cloudsim}.
+\newblock \url{http://www.cloudbus.org/cloudsim/}.
+\newblock Accessed: 2015-05-22.
+
+\bibitem{Greencloud}
+{greencloud}.
+\newblock \url{https://greencloud.gforge.uni.lu/}.
+\newblock Accessed: 2015-05-22.
+
+\bibitem{Reinforced}
+{Reinforcement Learning: An Introduction}.
+\newblock \url{http://webdocs.cs.ualberta.ca/~sutton/book/ebook/}.
+\newblock Accessed: 2015-05-22.
+
+\bibitem{Rightscale}
+{Rightscale}.
+\newblock \url{http://www.rightscale.com/}.
+\newblock Accessed: 2015-05-22.
+
+\bibitem{amazon2010amazon}
+E.~Amazon.
+\newblock Amazon elastic compute cloud (amazon ec2).
+\newblock {\em Amazon Elastic Compute Cloud (Amazon EC2)}, 2010.
+
+\bibitem{barrett2013applying}
+E.~Barrett, E.~Howley, and J.~Duggan.
+\newblock Applying reinforcement learning towards automating resource
+  allocation and application scalability in the cloud.
+\newblock {\em Concurrency and Computation: Practice and Experience},
+  25(12):1656--1674, 2013.
+
+\bibitem{box2015time}
+G.~E. Box, G.~M. Jenkins, G.~C. Reinsel, and G.~M. Ljung.
+\newblock {\em Time series analysis: forecasting and control}.
+\newblock John Wiley \& Sons, 2015.
+
+\bibitem{calheiros2011cloudsim}
+R.~N. Calheiros, R.~Ranjan, A.~Beloglazov, C.~A. De~Rose, and R.~Buyya.
+\newblock Cloudsim: a toolkit for modeling and simulation of cloud computing
+  environments and evaluation of resource provisioning algorithms.
+\newblock {\em Software: Practice and Experience}, 41(1):23--50, 2011.
+
+\bibitem{chieu2011dynamic}
+T.~C. Chieu and H.~Chan.
+\newblock Dynamic resource allocation via distributed decisions in cloud
+  environment.
+\newblock In {\em e-Business Engineering (ICEBE), 2011 IEEE 8th International
+  Conference on}, pages 125--130. IEEE, 2011.
+
+\bibitem{chieu2009dynamic}
+T.~C. Chieu, A.~Mohindra, A.~A. Karve, and A.~Segal.
+\newblock Dynamic scaling of web applications in a virtualized cloud computing
+  environment.
+\newblock In {\em e-Business Engineering, 2009. ICEBE'09. IEEE International
+  Conference on}, pages 281--286. IEEE, 2009.
+
+\bibitem{dawoud2013scalability}
+W.~Dawoud.
+\newblock Scalability and performance management of internet applications in
+  the cloud.
+\newblock {\em Communication Infrastructures for Cloud Computing}, page 434,
+  2013.
+
+\bibitem{dean2008mapreduce}
+J.~Dean and S.~Ghemawat.
+\newblock Mapreduce: simplified data processing on large clusters.
+\newblock {\em Communications of the ACM}, 51(1):107--113, 2008.
+
+\bibitem{dutreilh2011using}
+X.~Dutreilh, S.~Kirgizov, O.~Melekhova, J.~Malenfant, N.~Rivierre, and
+  I.~Truck.
+\newblock Using reinforcement learning for autonomic resource allocation in
+  clouds: towards a fully automated workflow.
+\newblock In {\em Int. Conf. on Autonomic and Autonomous Systems}, pages
+  67--74, 2011.
+
+\bibitem{galante2012survey}
+G.~Galante and L.~C.~E. de~Bona.
+\newblock A survey on cloud computing elasticity.
+\newblock In {\em Utility and Cloud Computing (UCC), 2012 IEEE Fifth
+  International Conference on}, pages 263--270. IEEE, 2012.
+
+\bibitem{gong2010press}
+Z.~Gong, X.~Gu, and J.~Wilkes.
+\newblock Press: Predictive elastic resource scaling for cloud systems.
+\newblock In {\em Network and Service Management (CNSM), 2010 International
+  Conference on}, pages 9--16. IEEE, 2010.
+
+\bibitem{han2012lightweight}
+R.~Han, L.~Guo, M.~M. Ghanem, and Y.~Guo.
+\newblock Lightweight resource scaling for cloud applications.
+\newblock In {\em Cluster, Cloud and Grid Computing (CCGrid), 2012 12th
+  IEEE/ACM International Symposium on}, pages 644--651. IEEE, 2012.
+
+\bibitem{herbst2012workload}
+N.~R. Herbst.
+\newblock {\em Workload Classification and Forecasting}.
+\newblock PhD thesis, IBM, 2012.
+
+\bibitem{hyndman2007automatic}
+R.~J. Hyndman, Y.~Khandakar, et~al.
+\newblock Automatic time series for forecasting: the forecast package for r.
+\newblock Technical report, Monash University, Department of Econometrics and
+  Business Statistics, 2007.
+
+\bibitem{islam2012empirical}
+S.~Islam, J.~Keung, K.~Lee, and A.~Liu.
+\newblock Empirical prediction models for adaptive resource provisioning in the
+  cloud.
+\newblock {\em Future Generation Computer Systems}, 28(1):155--162, 2012.
+
+\bibitem{josephsen2007building}
+D.~Josephsen.
+\newblock {\em Building a monitoring infrastructure with Nagios}.
+\newblock Prentice Hall PTR, 2007.
+
+\bibitem{kim2015pics}
+I.~K. Kim, W.~Wang, and M.~Humphrey.
+\newblock Pics: A public iaas cloud simulator.
+\newblock In {\em Cloud Computing (CLOUD), 2015 IEEE 8th International
+  Conference on}, pages 211--220. IEEE, 2015.
+
+\bibitem{kliazovich2012greencloud}
+D.~Kliazovich, P.~Bouvry, and S.~U. Khan.
+\newblock Greencloud: a packet-level simulator of energy-aware cloud computing
+  data centers.
+\newblock {\em The Journal of Supercomputing}, 62(3):1263--1283, 2012.
+
+\bibitem{kupferman2009scaling}
+J.~Kupferman, J.~Silverman, P.~Jara, and J.~Browne.
+\newblock Scaling into the cloud.
+\newblock {\em CS270-advanced operating systems}, 2009.
+
+\bibitem{kvmhyper}
+KVM.
+\newblock Kvm.
+\newblock \url{http://www.linux-kvm.org/page/Main\_Page}, 2015.
+\newblock [Online; accessed 7-May-2015].
+
+\bibitem{lorido2012auto}
+T.~Lorido-Botr{\'a}n, J.~Miguel-Alonso, and J.~A. Lozano.
+\newblock Auto-scaling techniques for elastic applications in cloud
+  environments.
+\newblock {\em Department of Computer Architecture and Technology, University
+  of Basque Country, Tech. Rep. EHU-KAT-IK-09}, 12:2012, 2012.
+
+\bibitem{makridakis2008forecasting}
+S.~Makridakis, S.~C. Wheelwright, and R.~J. Hyndman.
+\newblock {\em Forecasting methods and applications}.
+\newblock John Wiley \& Sons, 2008.
+
+\bibitem{mao2011auto}
+M.~Mao and M.~Humphrey.
+\newblock Auto-scaling to minimize cost and meet application deadlines in cloud
+  workflows.
+\newblock In {\em Proceedings of 2011 International Conference for High
+  Performance Computing, Networking, Storage and Analysis}, page~49. ACM, 2011.
+
+\bibitem{mao2012performance}
+M.~Mao and M.~Humphrey.
+\newblock A performance study on the vm startup time in the cloud.
+\newblock In {\em Cloud Computing (CLOUD), 2012 IEEE 5th International
+  Conference on}, pages 423--430. IEEE, 2012.
+
+\bibitem{mell2011nist}
+P.~Mell and T.~Grance.
+\newblock The nist definition of cloud computing.
+\newblock {\em The NIST definition of cloud computing}, 2011.
+
+\bibitem{nguyen2013agile}
+H.~Nguyen, Z.~Shen, X.~Gu, S.~Subbiah, and J.~Wilkes.
+\newblock Agile: Elastic distributed resource scaling for
+  infrastructure-as-a-service.
+\newblock In {\em Proc. of the USENIX International Conference on Automated
+  Computing (ICAC’13). San Jose, CA}, 2013.
+
+\bibitem{niu2012quality}
+D.~Niu, H.~Xu, B.~Li, and S.~Zhao.
+\newblock Quality-assured cloud bandwidth auto-scaling for video-on-demand
+  applications.
+\newblock In {\em INFOCOM, 2012 Proceedings IEEE}, pages 460--468. IEEE, 2012.
+
+\bibitem{rstat}
+{R Core Team}.
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria, 2013.
+\newblock {ISBN} 3-900051-07-0.
+
+\bibitem{rackspace2010inc}
+U.~Rackspace.
+\newblock Inc.,“the rackspace cloud,”, 2010.
+
+\bibitem{rao2009vconf}
+J.~Rao, X.~Bu, C.-Z. Xu, L.~Wang, and G.~Yin.
+\newblock Vconf: a reinforcement learning approach to virtual machines
+  auto-configuration.
+\newblock In {\em Proceedings of the 6th international conference on Autonomic
+  computing}, pages 137--146. ACM, 2009.
+
+\bibitem{roy2011efficient}
+N.~Roy, A.~Dubey, and A.~Gokhale.
+\newblock Efficient autoscaling in the cloud using predictive models for
+  workload forecasting.
+\newblock In {\em Cloud Computing (CLOUD), 2011 IEEE International Conference
+  on}, pages 500--507. IEEE, 2011.
+
+\bibitem{sharma2011cost}
+U.~Sharma, P.~Shenoy, S.~Sahu, and A.~Shaikh.
+\newblock A cost-aware elasticity provisioning system for the cloud.
+\newblock In {\em Distributed Computing Systems (ICDCS), 2011 31st
+  International Conference on}, pages 559--570. IEEE, 2011.
+
+\bibitem{shumway2006time}
+R.~H. Shumway and D.~S. Stoffer.
+\newblock Time series analysis and its application with r examples.
+\newblock {\em University of California, Davis, CA}, 2006.
+
+\bibitem{vaquero2011dynamically}
+L.~M. Vaquero, L.~Rodero-Merino, and R.~Buyya.
+\newblock Dynamically scaling applications in the cloud.
+\newblock {\em ACM SIGCOMM Computer Communication Review}, 41(1):45--52, 2011.
+
+\bibitem{vmwareesx}
+VMware.
+\newblock Vmware esxi.
+\newblock \url{https://www.vmware.com/products/esxi-and-esx/overview}, 2015.
+\newblock [Online; accessed 7-May-2015].
+
+\bibitem{von2014limbo}
+J.~G. von Kistowski, N.~R. Herbst, and S.~Kounev.
+\newblock Limbo: A tool for modeling variable load intensities.
+\newblock In {\em Proceedings of the 5th ACM/SPEC International Conference on
+  Performance Engineering (ICPE 2014)}, 2014.
+
+\bibitem{wang2013reserve}
+W.~Wang, B.~Li, and B.~Liang.
+\newblock To reserve or not to reserve: Optimal online multi-instance
+  acquisition in iaas clouds.
+\newblock {\em arXiv preprint arXiv:1305.5608}, 2013.
+
+\bibitem{timeseriesdefinition}
+R.~Weber.
+\newblock Time series.
+\newblock \url{http://www.statslab.cam.ac.uk/~rrw1/timeseries/t.pdf}, 2015.
+\newblock [Online; accessed 7-May-2015].
+
+\bibitem{whitle1951hypothesis}
+P.~Whitle.
+\newblock {\em Hypothesis testing in time series analysis}, volume~4.
+\newblock Almqvist \& Wiksells, 1951.
+
+\bibitem{xenhyper}
+Xen.
+\newblock Xen.
+\newblock \url{http://www.xenproject.org}, 2015.
+\newblock [Online; accessed 7-May-2015].
+
+\bibitem{yazdanov2013vscaler}
+L.~Yazdanov and C.~Fetzer.
+\newblock Vscaler: Autonomic virtual machine scaling.
+\newblock In {\em 2013 IEEE Sixth International Conference on Cloud Computing},
+  pages 212--219. IEEE, 2013.
+
+\end{thebibliography}

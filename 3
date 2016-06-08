@@ -1,0 +1,49 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tikz}
+
+\newcommand{\myrule} [3] []{
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[#2-#3, ultra thick, #1] (0,0) to (0.5\linewidth,0);
+        \end{tikzpicture}
+    \end{center}
+}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
+	\myrule{}{}
+	{\huge\bfseries Elastic Load Scaling for Audio/Video Conferencing Services\par}
+	\myrule[double]{}{}
+	\vspace{2cm}
+	{\scshape\Large Subramanya Umashankar Joshi\par}
+	\vspace{1.5cm}
+	\vspace{2cm}
+	{\itshape Professor: Prof. Dr. rer. nat. habil. Dr. h. c. Alexander Schill\par}
+	\vfill
+	{\itshape Supervisor: M.Sc. Kateryna Rybina\par}
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+
+\bibliographystyle{abbrv}
+
+% \maketitle
+
+\chapter*{Task Description}
+\input{Chapters/task}
+
+\chapter*{Abstract}
+\input{Chapters/abstract}
+
+\tableofcontents
+
+\chapter{Introduction}
+\label{chap:Introduction}
+\input{Chapters/chapter01}
+
+\bibliography{handin}
+\end{document}

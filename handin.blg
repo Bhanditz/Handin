@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: handin.aux
+The style file: abbrv.bst
+Database file #1: handin.bib
+Warning--to sort, need author or key in AmazonAutoScale
+Warning--to sort, need author or key in Rightscale
+Warning--to sort, need author or key in Reinforced
+Warning--to sort, need author or key in Azurewatch
+Warning--to sort, need author or key in AlexanderSim
+Warning--to sort, need author or key in Cloudsim
+Warning--to sort, need author or key in Greencloud
+You've used 48 entries,
+            2118 wiz_defined-function locations,
+            731 strings with 11633 characters,
+and the built_in function-call counts, 15585 in all, are:
+= -- 1569
+> -- 664
+< -- 16
++ -- 270
+- -- 218
+* -- 916
+:= -- 2451
+add.period$ -- 161
+call.type$ -- 48
+change.case$ -- 247
+chr.to.int$ -- 0
+cite$ -- 55
+duplicate$ -- 643
+empty$ -- 1312
+format.name$ -- 218
+if$ -- 3425
+int.to.chr$ -- 0
+int.to.str$ -- 48
+missing$ -- 37
+newline$ -- 247
+num.names$ -- 82
+pop$ -- 372
+preamble$ -- 1
+purify$ -- 204
+quote$ -- 0
+skip$ -- 467
+stack$ -- 0
+substring$ -- 811
+swap$ -- 188
+text.length$ -- 16
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 184
+warning$ -- 7
+while$ -- 136
+width$ -- 50
+write$ -- 522
+(There were 7 warnings)
