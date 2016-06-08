@@ -6,11 +6,13 @@
 \contentsline {table}{\numberline {3.1}{\ignorespaces Table of Forecast Strategies and their Properties (From\cite {herbst2012workload})\relax }}{23}{table.caption.15}
 \contentsline {table}{\numberline {3.2}{\ignorespaces Simulation Capabilities of Existing Cloud Simulator and PICS (Table taken from \cite {kim2015pics})\relax }}{26}{table.caption.16}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces List of input parameters to AppElastic algorithm\relax }}{31}{table.caption.17}
-\contentsline {table}{\numberline {4.2}{\ignorespaces List of out values from AppElastic algorithm\relax }}{31}{table.caption.18}
-\contentsline {table}{\numberline {4.3}{\ignorespaces List of input parameters to forecasting algorithm\relax }}{33}{table.caption.20}
-\contentsline {table}{\numberline {4.4}{\ignorespaces List of input parameters to AppElastic algorithm with lookahead\relax }}{34}{table.caption.22}
+\contentsline {table}{\numberline {4.1}{\ignorespaces List of input parameters to \textit {Algorithm}\nobreakspace {}\ref {algo:appelasticwithoutlookahead}\relax }}{31}{table.caption.17}
+\contentsline {table}{\numberline {4.2}{\ignorespaces List of out values from \textit {Algorithm}\nobreakspace {}\ref {algo:appelasticwithoutlookahead} and \textit {Algorithm}\nobreakspace {}\ref {algo:appelasticwithlookahead}\relax }}{31}{table.caption.18}
+\contentsline {table}{\numberline {4.3}{\ignorespaces List of input parameters to \textit {Algorithm}\nobreakspace {}\ref {algo:forecastalgo}\relax }}{33}{table.caption.20}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Additional input parameters to \textit {Algorithm}\nobreakspace {}\ref {algo:appelasticwithlookahead}\relax }}{34}{table.caption.22}
+\contentsline {table}{\numberline {4.5}{\ignorespaces List of input parameters to \textit {Algorithm}\nobreakspace {}\ref {algo:appelastic}\relax }}{36}{table.caption.24}
+\contentsline {table}{\numberline {4.6}{\ignorespaces List of out values from \textit {Algorithm}\nobreakspace {}\ref {algo:appelastic}\relax }}{36}{table.caption.25}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Fixed experiment parameters\relax }}{54}{table.caption.40}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Fixed experiment parameters\relax }}{56}{table.caption.42}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -23,7 +23,7 @@ In this section AppElastic algorithm is introduced without the feature of worklo
 \\
 As it was defined, AppElastic algorithm is based on threshold based rules. AppElastic algorithm takes number of user session per VM instance as threshold specified by the parameter \( U_{i} \). This threshold is used for triggering scaling of VM. This threshold is determined by QoS demand requirements as per SLA. The pseudo code of the algorithm is given in \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead}. Output values from  \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead} are as shown in Table~\ref{table:outputtable}. It give two type of output, one is the usage of each VM instance through $VM_{usage}^{i}$ and cost associated with this usage in $VM_{cost}^{i}$. Algorithm is started after application is deployed and keeps running until application is completed. Scaleup is triggered when it observe the user requests growing above the specified threshold or scale down if the billing period of VM is ending and number of user session are below specified threshold.
 \\
-The algorithm applies an automatic reactive scaling mechanism similar to mechanisms applied by Amazon Auto Scale and Rightscale\cite{han2012lightweight}. The threshold based scaling need no prior knowledge about the application. Each time VM instances are scaled its load balancing server automatically redistributes incoming user request to new created instances\cite{han2012lightweight}. This algorithm tries to provide best service for all of its application users by creating as much VM instances needed. This algorithm is effected by the VM startup time, since there is an overhead in VM startup time, VM's cannot be made available by the scaling algorithm to the application users. As show in the Figure~\ref{fig:slaviolationfig}, due to a sudden increase in incoming user requests the scaling algorithm starts adding new machines, since VM has considerable startup time users were not served at this time and SLA is violated. To solve this problem, we need a mechanism to predict user request for certain period, so that algorithm can look-ahead in time and add new VM instances which server all upcoming user requests without violating SLA.
+The algorithm applies an automatic reactive scaling mechanism similar to mechanisms applied by Amazon Auto Scale and Rightscale\cite{han2012lightweight}. The threshold based scaling need no prior knowledge about the application. Each time VM instances are scaled its load balancing server automatically redistributes incoming user request to new created instances\cite{han2012lightweight}. This algorithm tries to provide best service for all of its application users by creating as much VM instances needed. This algorithm is effected by the VM startup time, since there is an overhead in VM startup time, VM's cannot be made available by the scaling algorithm to the application users. As show in the Figure~\ref{fig:slaviolationfig}, due to a sudden increase in incoming user requests the scaling algorithm starts adding new machines, since VM has considerable startup time users were not served at this time and SLA is violated by not providing the service. This is evident from the Figure~\ref{figure:slavioa} and Figure~\ref{figure:slaviob}, number of VM's available to serve the user request are inadequate hence user request red dotted line does not fall under VM's capacity blue line. To solve this problem, we need a mechanism to predict user request for certain period, so that algorithm can look-ahead in time and add new VM instances which server all upcoming user requests without violating SLA.
 
 \RestyleAlgo{boxruled}
 \LinesNumbered
@@ -65,7 +65,7 @@ The algorithm applies an automatic reactive scaling mechanism similar to mechani
       \( T_{start} \) & Time taken for a VM and its application to start  and update its states if necessary  \\ \hline
       \( T_{shutdown} \) & Time taken for VM instance shutdown\\ \hline
     \end{tabular}
-    \caption{List of input parameters to AppElastic algorithm}
+    \caption{List of input parameters to \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead}}
      \label{table:paratable}
 \end{table}
 \end{center}
@@ -78,7 +78,7 @@ The algorithm applies an automatic reactive scaling mechanism similar to mechani
       $VM_{usage}^{i}$ & Usage of each $VM_{i}$ in minutes  \\ \hline
       $VM_{cost}^{i}$ & Cost of $VM_{i}$ for its usage \\ \hline
     \end{tabular}
-    \caption{List of out values from AppElastic algorithm}
+    \caption{List of out values from \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead} and \textit{Algorithm}~\ref{algo:appelasticwithlookahead}}
      \label{table:outputtable}
 \end{table}
 \end{center}
@@ -103,7 +103,7 @@ To forecast the workload, the model developed above is used for prediction with 
       Forecast Horizon & Positive integer values quantifying the number of time series points to forecast.  \\ \hline
       Confidence Level(optional)  & An interval \([0,100)\) for forecast confidence.\\ \hline
     \end{tabular}
-    \caption{List of input parameters to forecasting algorithm}
+    \caption{List of input parameters to \textit{Algorithm}~\ref{algo:forecastalgo}}
      \label{table:forecastparameter}
 \end{table}
 \end{flushleft}
@@ -138,19 +138,53 @@ As discussion in the previous section, VM startup time effects the SLA due to th
     \begin{tabular}{ | L{5cm} | L{5cm} | L{5cm} |}
       \hline
       Parameter & Description \\ \hline
-      \( Lookahead_{scaleup} \) & Forecasted values to use for scaleup \\ \hline
-      \( Lookahead_{scaledown} \) & Forecasted values to use for scaledown\\ \hline
+      \( Lookahead_{scaleup} \) & Time interval for lookahead for scaling up \\ \hline
+      \( Lookahead_{scaledown} \) & Time interval for lookahead for scaling down\\ \hline
     \end{tabular}
     }
-    \caption{List of input parameters to AppElastic algorithm with lookahead}
+    \caption{Additional input parameters to \textit{Algorithm}~\ref{algo:appelasticwithlookahead}}
      \label{table:algo2paratable}
 \end{table}
 \end{flushleft}
 
 \subsubsection{AppElastic}
 \label{subs:AppElastic}
-Until now, AppElastic algorithm was discussed based on the scalability perspective. But one of the main goals of this thesis remain to be solved. The problem of choosing right instance type for a particular use case is till needed to addressed.  IaaS cloud provider offer diverse instance purchasing options. As discussed in Chapter 1, a user can either run instances on demand and pay only for what is used or he can prepay to reserved instances for long so that he can avail some discount. There  exist few strategies as discussed in literature\cite{wang2013reserve}, but there is no silver bullet for solving this problem. However in the scope of this thesis, historical workload trances are useful to observe production application and VM instance usage. Based on generate and test heuristic technique, various reserve instance values are used to find the optimal combination of reserver instance and on-demand instances by running AppElastic on the historical workload. Based on this heuristic technique, an optimal number is derived for reserving instances based on the cost benefits. Based on this requirement AppElastic with forecasting is extended to include two instance types and its purchasing cost. The complete AppElastic algorithm is as show in ~\ref{algo:appelasticwithlookahead}. The new algorithm considers two instance types: Reserved instances (RI) and On-demand instances (ODI). AppElastic user specifies the number of reserved instances to use so that it can calculate the cost incurred or saved by reserving an instance. Along with the number of reserved instances to use, the AppElastic also required the prices for each instance type in terms of effective hourly billing cost specified in US dollars as specified in Table~\ref{table:cost}. After specifying all the parameter, the algorithm need be run repeatedly to know the best number of instances to reserve which provide cost benefits. The idea behind the scaling remains the same from Algorithm~\ref{algo:appelasticwithlookahead}. On successful completion, total cost of reserved instances and total cost of on-demand instances are provided as output.
+Until now, AppElastic algorithm was discussed based on the scalability perspective. But one of the main goals of this thesis remain to be solved. The problem of choosing right instance type for a particular use case is till needed to be addressed.  IaaS cloud provider offers diverse instance purchasing options. As discussed in Chapter 1, a user can either run instances on demand and pay only for what is used or he can prepay to reserved instances for long so that he can avail some discount. There  exist few strategies as discussed in literature\cite{wang2013reserve}, but there is no silver bullet for solving this problem. However in the scope of this thesis, historical workload traces are useful to observe production application and VM instance usage. Based on heuristic technique, number of reserve instance used is varied, to find the optimal combination of reserver instance and on-demand instances by running AppElastic on the historical workload. Based on this heuristic technique, an optimal number is proposed to the user of the algorithm for choosing right number of reserving instances based on the cost benefits. Based on this requirement AppElastic with forecasting is extended to include two instance types and its purchasing cost. The complete AppElastic algorithm is as show in \textit{Algorithm}~\ref{algo:appelastic}. The new algorithm considers two instance types: Reserved instances (RI) and On-demand instances (ODI) and hence its instances are grouped into two separate lists. The cost associated with these two instances are passed as parameter via $Cost_{ri}$ and $Cost_{odi}$ for RI and ODI instances respectively. AppElastic user specifies the number of reserved instances to use so that it can calculate the cost incurred or saved by reserving an instance. Along with the number of reserved instances to use, the AppElastic also required the prices for each instance type in terms of effective hourly billing cost specified in US dollars as specified in Table~\ref{table:cost}. The input parameter to \textit{Algorithm}~\ref{algo:appelastic} are as shown in Table~\ref{table:appelasticparatable}. \textit{Algorithm}~\ref{algo:appelastic} need additional three parameters when compared to \textit{Algorithm}~\ref{algo:appelasticwithlookahead}. $Cost_{ri}$ and $Cost_{odi}$ are the cost of RI and ODI instances respectively. $Count_{ri}$ is the total RI instances to use. Value of $Count_{ri}$ is identified through heuristics approach described before and this process is automated in ElasticSim simulator. The idea behind the scaling remains the same from \textit{Algorithm}~\ref{algo:appelasticwithlookahead}. On successful completion, total cost of reserved instances and total cost of on-demand instances are provided as output. These output values are as described in Table~\ref{table:outputtableodiri}.
 
+\begin{center}
+  \begin{table}
+    \begin{tabular}{ | L{6cm} | L{6cm} |}
+      \hline
+      Parameter & Description \\ \hline
+      \( U_{i} \) & Number of user session a single instance can accommodate  \\ \hline
+      \( B_{p} \) & Billing period of instance as per cloud service provider policy \\ \hline
+      \( T_{start} \) & Time taken for a VM and its application to start  and update its states if necessary  \\ \hline
+      \( T_{shutdown} \) & Time taken for VM instance shutdown\\ \hline
+      $Lookahead_{scaleup}$ & Time interval to lookahead for scaling up \\ \hline
+      $Lookahead_{scaledown}$ & Time interval to lookahead for scaling down \\ \hline
+      $Cost_{ri}$ & Cost of RI instances as per Amazon AWS pricing as per Table~\ref{table:cost} \\ \hline
+      $Cost_{odi}$ & Cost of ODI instances as per Amazon AWS pricing as per Table~\ref{table:cost} \\ \hline
+      $Count_{ri}$ & Total number of RI instances to use \\ \hline
+    \end{tabular}
+    \caption{List of input parameters to \textit{Algorithm}~\ref{algo:appelastic}}
+     \label{table:appelasticparatable}
+\end{table}
+\end{center}
+
+\begin{center}
+  \begin{table}
+    \begin{tabular}{ | L{6cm} | L{6cm} |}
+      \hline
+      Parameter & Description \\ \hline
+      $VM_{usage}^{i}$ & Usage of each $VM_{i}$ in minutes  \\ \hline
+      $VM_{cost}^{i}$ & Cost of $VM_{i}$ for its usage \\ \hline
+      $Total_{cost}^{ri}$ & Total cost of RI instances \\ \hline
+      $Total_{cost}^{odi}$ & Total cost of ODI instances \\ \hline
+    \end{tabular}
+    \caption{List of out values from \textit{Algorithm}~\ref{algo:appelastic}}
+     \label{table:outputtableodiri}
+\end{table}
+\end{center}
 
 \begin{figure}
      \centering
@@ -189,7 +223,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
 
  \subsection{Design overview}
  \label{sub:Design overview}
- The goal of the simulation is to correctly simulate the behavior of the scaling algorithm in cloud environment from the cloud users perspective. From the cloud users perspective the cloud cost, time to resource allocation, and the VM's utilized are the most important criteria to evaluate cloud service for their cloud hosted application~\cite{kim2015pics}.
+ The goal of the simulation is to correctly simulate the behavior of the scaling algorithm in cloud environment from the cloud users perspective. From the cloud users perspective the cloud cost, time to resource allocation, and the VM's utilized are the most important criteria to evaluate cloud service for their cloud hosted application\cite{kim2015pics}.
 
  \subsubsection{Key challenges to design ElasticSim}
  \label{subs:Key challenges to design ElasticSim}
@@ -198,7 +232,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
  \begin{enumerate}
    \item How to model the VM without relaying on any virtualization technologies?
    \item How to handle the user requests data to provide input to the simulator?
-   \item How to model the scaling algorithm within the simulator?
+   \item How to integrate scaling algorithm within the simulator?
  \end{enumerate}
 
  To solve the first challenge, ElasticSim simulator is designed to model each VM as an object. Simulator user can define diverse VM configurations and its associated cost in a configuration file. For second challenge, ElasticSim provides a data cleaning interface to clean raw data containing user requests to make it efficiently processed by the simulator. Last, to include scaling algorithm the simulator is designed such that the scaling algorithm can be easily interchanged.
@@ -217,7 +251,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
  \LinesNumbered
  \begin{algorithm}[ht]
   \KwIn{\( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \), \( Lookahead_{scaleup} \), \( Lookahead_{scaledown}\)}
-  \KwOut{Total hours VM instances used, cost of each VM instace.}
+  \KwOut{$VM_{usage}^{i}$,$VM_{cost}^{i}$}
   \While{until application is active}{
    \tcc{Get perdicted user request \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
    \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaleup}\)))\;
@@ -250,7 +284,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
   \LinesNumbered
   \begin{algorithm}[ht]
    \KwIn{\( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \), \( Lookahead_{scaleup} \), \( Lookahead_{scaledown}\), \( Cost_{ri}\), \(Cost_{odi}\), \(Count_{ri}\)}
-   \KwOut{Total hours VM instances used, total cost of reserved instaces, total cost of on-demand instance.}
+   \KwOut{$VM_{usage}^{i}$,$VM_{cost}^{i}$,$Total_{cost}^{ri}$,$Total_{cost}^{odi}$}
    \While{until application is active}{
     \tcc{Get perdicted user request \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
     \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaleup}\)))\;
