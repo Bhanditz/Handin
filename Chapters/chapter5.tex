@@ -362,21 +362,22 @@ Users_{\textrm{SLA violation}} = UserRequest_{t} - Capaticy_{t}
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=0.1]{boxplotslaviolation.png}
+    \includegraphics[scale=0.12]{boxplotslaviolation.png}
     \caption{Boxplot of SLA violation}
     \label{figure:boxplotslaviolation}
   \end{center}
 \end{figure}
 \subsection{Cost Evaluation}
 \label{sub:Cost Evaluation}
-As discussed in section~\ref{subs:ElasticSim Operation}, ElasticSim given an option of determining how many number of reserved instances to purchase to gain cost benefits\footnote{https://blog.cloudability.com/aws-101-reserved-instances/}. As shown Figure~\ref{figure:purchaseoption}, after running ElasticSim on test workload it produces various option of varying reserved instances. From the Figure~\ref{figure:purchaseoption}, bar graph is grouped into various options. In each option first bar represents the base line price, which is the cost of reserved instances used when serving peak workload. In the scope of this experiment, the base line was calculated for a peak workload of 1070 users. Based on this peak workload, total of 9 VM's are necessary for the period of simulation which is 41 hours and the cost associated with this is USD \$213.2. Since, ElasticSim varies the number of reserve instances to use for providing various option. The second bar represents cost associated with reserving the instances for that particular option. Total number of instances reserved for each option is presented in purple colored bar. Keeping reserved instances fixed through out the simulation, on-demand instances are used for varied workload. The cost associated with on-demand instances are presented in blue bar. The total cost, presented in cyan color, is the sum of reserved instance cost and on-demand instance costs. This total cost is used to make the right instance purchasing choose. Of all the option, option-3 provides a best option for purchasing since the total cost for 3 reserved instance and 18 on-demand instances will cost USD \$158.8. Using purchase option 3, ElasticSim was configured to use total of 3 reserved instances for the simulation duration of 41 hours and the cost benefits of using this option was the saving of USD \$52.45. 
+As discussed in section~\ref{subs:ElasticSim Operation}, ElasticSim given an option of determining how many number of reserved instances to purchase to gain cost benefits\footnote{https://blog.cloudability.com/aws-101-reserved-instances/}. As shown Figure~\ref{figure:purchaseoption}, after running ElasticSim on test workload it produces various option of varying reserved instances. From the Figure~\ref{figure:purchaseoption}, bar graph is grouped into various options. In each option first bar represents the base line price, which is the cost of reserved instances used when serving peak workload. In the scope of this experiment, the base line was calculated for a peak workload of 1070 users. Based on this peak workload, total of 9 VM's are necessary for the period of simulation which is 41 hours and the cost associated with this is USD \$213.2. Since, ElasticSim varies the number of reserve instances to use for providing various option. The second bar represents cost associated with reserving the instances for that particular option. Total number of instances reserved for each option is presented in purple colored bar. Keeping reserved instances fixed through out the simulation, on-demand instances are used for varied workload. The cost associated with on-demand instances are presented in blue bar. The total cost, presented in cyan color, is the sum of reserved instance cost and on-demand instance costs. This total cost is used to make the right instance purchasing choose. Of all the option, option-3 provides a best option for purchasing since the total cost for 3 reserved instance and 18 on-demand instances will cost USD \$158.8. Using purchase option 3, ElasticSim was configured to use total of 3 reserved instances for the simulation duration of 41 hours and the cost benefits of using this option was the saving of USD \$52.45. In figure~\ref{figure:vmlifetime}, y-axis corresponds to VM-ID and x-axis is the time duration of the simulation. Red bars the graphs represents the total time of billing of each VM. Number of minutes used and its associated cost are mentioned next to the plot.
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=0.07]{purchaseoption.png}
+    \includegraphics[scale=0.05]{purchaseoption.png}
     \caption{Cost effective instance purchase option}
     \label{figure:purchaseoption}
   \end{center}
 \end{figure}
+
 
 \section{Summary}
 \label{sec:Summary}
@@ -446,3 +447,11 @@ for (int i = 0; i < runningRiInstances.size(); i++) {
  }
 }
 \end{lstlisting}
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[scale=0.04,angle=90]{vmlifetime.png}
+    \caption{Life time of each VM used}
+    \label{figure:vmlifetime}
+  \end{center}
+\end{figure}
