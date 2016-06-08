@@ -32,29 +32,29 @@
 \contentsline {subsubsection}{Workload Forecasting Technique}{31}{section*.19}
 \contentsline {subsubsection}{AppElastic with Look-ahead}{33}{section*.21}
 \contentsline {subsubsection}{AppElastic}{34}{section*.23}
-\contentsline {section}{\numberline {4.4}Simulation design}{39}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Design overview}{39}{subsection.4.4.1}
-\contentsline {subsubsection}{Key challenges to design ElasticSim}{39}{section*.26}
-\contentsline {subsubsection}{Simulation Internals}{39}{section*.27}
-\contentsline {section}{\numberline {4.5}Summary}{42}{section.4.5}
-\contentsline {chapter}{\numberline {5}Implementation and Evaluation}{44}{chapter.5}
-\contentsline {section}{\numberline {5.1}ElasticSim}{44}{section.5.1}
-\contentsline {subsubsection}{Technology Selection}{44}{section*.29}
-\contentsline {subsubsection}{ElasticSim Operation}{45}{section*.30}
-\contentsline {subsubsection}{Input to ElasticSim}{45}{section*.32}
-\contentsline {subsubsection}{Output from ElasicSim}{46}{section*.34}
-\contentsline {section}{\numberline {5.2}Modeling workload \& prediction}{48}{section.5.2}
-\contentsline {section}{\numberline {5.3}AppElastic Algorithm Implementation}{50}{section.5.3}
-\contentsline {section}{\numberline {5.4}Evaluation}{56}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Evaluation of AppElastic Algorithm}{56}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Forecast Accuracy}{59}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}SLA violation}{59}{subsection.5.4.3}
-\contentsline {subsection}{\numberline {5.4.4}Cost Evaluation}{63}{subsection.5.4.4}
-\contentsline {section}{\numberline {5.5}Summary}{65}{section.5.5}
-\contentsline {chapter}{\numberline {6}Discussion and Future Works}{67}{chapter.6}
-\contentsline {section}{\numberline {6.1}Achievements}{67}{section.6.1}
-\contentsline {section}{\numberline {6.2}Future Work}{69}{section.6.2}
-\contentsline {chapter}{\numberline {7}Conclusion}{71}{chapter.7}
-\contentsline {chapter}{List of Figures}{72}{chapter.7}
-\contentsline {chapter}{List of Tables}{73}{chapter*.48}
-\contentsline {chapter}{Bibliography}{74}{chapter*.49}
+\contentsline {section}{\numberline {4.4}Simulation design}{35}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Design overview}{35}{subsection.4.4.1}
+\contentsline {subsubsection}{Key challenges to design ElasticSim}{35}{section*.26}
+\contentsline {subsubsection}{Simulation Internals}{38}{section*.27}
+\contentsline {section}{\numberline {4.5}Summary}{38}{section.4.5}
+\contentsline {chapter}{\numberline {5}Implementation and Evaluation}{42}{chapter.5}
+\contentsline {section}{\numberline {5.1}ElasticSim}{42}{section.5.1}
+\contentsline {subsubsection}{Technology Selection}{42}{section*.31}
+\contentsline {subsubsection}{ElasticSim Operation}{43}{section*.32}
+\contentsline {subsubsection}{Input to ElasticSim}{43}{section*.34}
+\contentsline {subsubsection}{Output from ElasicSim}{44}{section*.36}
+\contentsline {section}{\numberline {5.2}Modeling workload \& prediction}{46}{section.5.2}
+\contentsline {section}{\numberline {5.3}AppElastic Algorithm Implementation}{48}{section.5.3}
+\contentsline {section}{\numberline {5.4}Evaluation}{54}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Evaluation of AppElastic Algorithm}{54}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Forecast Accuracy}{57}{subsection.5.4.2}
+\contentsline {subsection}{\numberline {5.4.3}SLA violation}{57}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.4}Cost Evaluation}{61}{subsection.5.4.4}
+\contentsline {section}{\numberline {5.5}Summary}{63}{section.5.5}
+\contentsline {chapter}{\numberline {6}Discussion and Future Works}{65}{chapter.6}
+\contentsline {section}{\numberline {6.1}Achievements}{65}{section.6.1}
+\contentsline {section}{\numberline {6.2}Future Work}{67}{section.6.2}
+\contentsline {chapter}{\numberline {7}Conclusion}{69}{chapter.7}
+\contentsline {chapter}{List of Figures}{70}{chapter.7}
+\contentsline {chapter}{List of Tables}{71}{chapter*.50}
+\contentsline {chapter}{Bibliography}{72}{chapter*.51}

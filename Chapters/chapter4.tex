@@ -150,40 +150,7 @@ As discussion in the previous section, VM startup time effects the SLA due to th
 \subsubsection{AppElastic}
 \label{subs:AppElastic}
 Until now, AppElastic algorithm was discussed based on the scalability perspective. But one of the main goals of this thesis remain to be solved. The problem of choosing right instance type for a particular use case is till needed to addressed.  IaaS cloud provider offer diverse instance purchasing options. As discussed in Chapter 1, a user can either run instances on demand and pay only for what is used or he can prepay to reserved instances for long so that he can avail some discount. There  exist few strategies as discussed in literature\cite{wang2013reserve}, but there is no silver bullet for solving this problem. However in the scope of this thesis, historical workload trances are useful to observe production application and VM instance usage. Based on generate and test heuristic technique, various reserve instance values are used to find the optimal combination of reserver instance and on-demand instances by running AppElastic on the historical workload. Based on this heuristic technique, an optimal number is derived for reserving instances based on the cost benefits. Based on this requirement AppElastic with forecasting is extended to include two instance types and its purchasing cost. The complete AppElastic algorithm is as show in ~\ref{algo:appelasticwithlookahead}. The new algorithm considers two instance types: Reserved instances (RI) and On-demand instances (ODI). AppElastic user specifies the number of reserved instances to use so that it can calculate the cost incurred or saved by reserving an instance. Along with the number of reserved instances to use, the AppElastic also required the prices for each instance type in terms of effective hourly billing cost specified in US dollars as specified in Table~\ref{table:cost}. After specifying all the parameter, the algorithm need be run repeatedly to know the best number of instances to reserve which provide cost benefits. The idea behind the scaling remains the same from Algorithm~\ref{algo:appelasticwithlookahead}. On successful completion, total cost of reserved instances and total cost of on-demand instances are provided as output.
-\RestyleAlgo{boxruled}
-\LinesNumbered
-\begin{algorithm}[H]
- \KwIn{\( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \), \( Lookahead_{scaleup} \), \( Lookahead_{scaledown}\), \( Cost_{ri}\), \(Cost_{odi}\), \(Count_{ri}\)}
- \KwOut{Total hours VM instances used, total cost of reserved instaces, total cost of on-demand instance.}
- \While{until application is active}{
-  \tcc{Get perdicted user request \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
-  \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaleup}\)))\;
-  \tcc{new machines \( n_{i} \) required in the interval \(Lookahead_{scaleup}\)}
-  \( n_{i} = (r_{i} / U_{i}) - Count_{ri} \)\;
-  \tcc{machines already running \( m_{i} \) at time \( t_{i} \)}
-  \( m_{i} = getRunningVmInstanceCount() \)\;
-  \uIf{\( n_{i} > m_{i} \)}{
-    \tcc{Add more machines}
-    \(newMachinesToStart =  n_{i} - m_{i}\)\;
-    \lFor{ i=1 \emph{\KwTo} newMachinesToStart }{
-    \tcc{New VM takes \( T_{start}\) mins to start}
-    start new VM instance
-    }
-   }
-   \uElseIf{\( n_{i} < m_{i} \)}{
-   \tcc{Get predicted user request \( r_{i} \) in the time interval \(Lookahead_{scaledown}\).}
-   \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaledown}\)))\;
-   \( n_{i} =  (r_{i} / U_{i}) - Count_{ri} \)\;
-   \(machinesToShutdown =  m_{i} - n_{i}\)\;
-    \tcc{Stop machine before billing period to avoid billing to next hour since machines take \( T_{shutdown}\) mins to shutdown.}
-    \lFor{ i=1 \emph{\KwTo} machinesToShutdown }{ Stop VM instance ending billing period }
-  }
-  \(totalReservedInstanceCost = Cost_{ri} * Count_{ri} * \) Total hours of usage of each reserved instances \;
-  \(totalOndemandInstanceCost = Cost_{odi} * \) Total On-demand instance used * Total hours of each On-demand instances used \;
- }
- \caption{AppElastic Algorithm}
- \label{algo:appelastic}
-\end{algorithm}
+
 
 \begin{figure}
      \centering
@@ -245,17 +212,10 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
  \item Simulation Core: Simulation core is responsible for processing the workload events and invoke the scaling algorithm.
  Different components of Simulation core is as show in Figure~\ref{figure:elasticsim}. The Log parser and converter component handles workloads and cleaning the raw data so that its efficient for event processor. Simulation event processor will read each event in workload and invoke scaling algorithm. Scaling algorithm will see the workload and create/release VM instances object represented by VM component. After the scaling algorithm finishes, simulation event processor will invoke the report generator to record the logs and generate the graphs.
  \end{itemize}
- \begin{figure}[h]
-   \begin{center}
-     \includegraphics[scale=0.6]{ElasticSim.png}
-     \caption{ElasticSim System Design}
-     \label{figure:elasticsim}
-   \end{center}
- \end{figure}
 
  \RestyleAlgo{boxruled}
  \LinesNumbered
- \begin{algorithm}[H]
+ \begin{algorithm}[ht]
   \KwIn{\( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \), \( Lookahead_{scaleup} \), \( Lookahead_{scaledown}\)}
   \KwOut{Total hours VM instances used, cost of each VM instace.}
   \While{until application is active}{
@@ -285,6 +245,50 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
   \caption{AppElastic Algorithm with look-ahead}
   \label{algo:appelasticwithlookahead}
  \end{algorithm}
+
+  \RestyleAlgo{boxruled}
+  \LinesNumbered
+  \begin{algorithm}[ht]
+   \KwIn{\( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \), \( Lookahead_{scaleup} \), \( Lookahead_{scaledown}\), \( Cost_{ri}\), \(Cost_{odi}\), \(Count_{ri}\)}
+   \KwOut{Total hours VM instances used, total cost of reserved instaces, total cost of on-demand instance.}
+   \While{until application is active}{
+    \tcc{Get perdicted user request \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
+    \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaleup}\)))\;
+    \tcc{new machines \( n_{i} \) required in the interval \(Lookahead_{scaleup}\)}
+    \( n_{i} = (r_{i} / U_{i}) - Count_{ri} \)\;
+    \tcc{machines already running \( m_{i} \) at time \( t_{i} \)}
+    \( m_{i} = getRunningVmInstanceCount() \)\;
+    \uIf{\( n_{i} > m_{i} \)}{
+      \tcc{Add more machines}
+      \(newMachinesToStart =  n_{i} - m_{i}\)\;
+      \lFor{ i=1 \emph{\KwTo} newMachinesToStart }{
+      \tcc{New VM takes \( T_{start}\) mins to start}
+      start new VM instance
+      }
+     }
+     \uElseIf{\( n_{i} < m_{i} \)}{
+     \tcc{Get predicted user request \( r_{i} \) in the time interval \(Lookahead_{scaledown}\).}
+     \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaledown}\)))\;
+     \( n_{i} =  (r_{i} / U_{i}) - Count_{ri} \)\;
+     \(machinesToShutdown =  m_{i} - n_{i}\)\;
+      \tcc{Stop machine before billing period to avoid billing to next hour since machines take \( T_{shutdown}\) mins to shutdown.}
+      \lFor{ i=1 \emph{\KwTo} machinesToShutdown }{ Stop VM instance ending billing period }
+    }
+    \(totalReservedInstanceCost = Cost_{ri} * Count_{ri} * \) Total hours of usage of each reserved instances \;
+    \(totalOndemandInstanceCost = Cost_{odi} * \) Total On-demand instance used * Total hours of each On-demand instances used \;
+   }
+   \caption{AppElastic Algorithm}
+   \label{algo:appelastic}
+  \end{algorithm}
+
+  \begin{figure}[h]
+    \begin{center}
+      \includegraphics[scale=0.6]{ElasticSim.png}
+      \caption{ElasticSim System Design}
+      \label{figure:elasticsim}
+    \end{center}
+  \end{figure}
+
 
  \section{Summary}
  \label{sec:Summary}
