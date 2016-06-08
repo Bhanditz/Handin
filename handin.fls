@@ -434,6 +434,9 @@ INPUT Chapters/chapter6.tex
 INPUT handin.lof
 INPUT handin.lof
 OUTPUT handin.lof
+INPUT handin.loa
+INPUT handin.loa
+OUTPUT handin.loa
 INPUT handin.lot
 INPUT handin.lot
 OUTPUT handin.lot
