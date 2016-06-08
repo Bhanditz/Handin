@@ -52,7 +52,7 @@ The simulator user can use their algorithm by replacing the implementation of th
 ElasicSim outputs are provided through logs and reports. Details of the logs generated, as comma separated value(csv), after each simulation run is provided here and the reports as output are discussed in evaluation section. ElasticSim provides two types of log files as output: VM usage logs and AppElastic logs. These two logs are as shown in the Figure~\ref{fig:elasticsimlogs}. These output is detailed as follows:
 \begin{itemize}
   \item As shown in the Figure~\ref{figure:costlog}, VM usage log provides details about VM based on VM-ID. Billing hour start and Billing hour end fields are provided to identify the billing period of each VM. VM activity start and VM activity end fields are used to find in what period the VM was actively serving users. These time are recorded as Unix timestamps. VM usage time is recorded in Usage (in Minutes) field and the cost of using VM based the billing hours is recorded in Cost field.
-  \item In Figure~\ref{figure:appelasticlogs}, logs related to AppElastic algorithm is shown. Its important to identify any anomaly in scaling algorithm, hence ElasticSim provides a detailed log of scaling. Logs are recorded for each time interval and helps in identifying the actual number of user request, number of VM's needed to serve these users and VM's provided by AppElastic algorithm. Each time interval is represented as unix timestamp in the field Unix timestamp. Actual number of users in the system is recorded in the field User request. Based on the threshold specified in the configuration and for the current number of user requests, VM required is recorded in VM needed field. VM activity such as billing start and activity start time are recorded VM active and VM billing fields respectively.
+  \item In Figure~\ref{figure:appelasticlogs}, logs related to AppElastic algorithm is shown. Its important to identify any anomaly in scaling algorithm, hence ElasticSim provides a detailed log of scaling. Logs are recorded for each time interval and helps in identifying the actual number of user requests, number of VM's needed to serve these users and VM's provided by AppElastic algorithm. Each time interval is represented as unix timestamp in the field Unix timestamp. Actual number of users in the system is recorded in the field User requests. Based on the threshold specified in the configuration and for the current number of user requests, VM required is recorded in VM needed field. VM activity such as billing start and activity start time are recorded VM active and VM billing fields respectively.
 \end{itemize}
 \begin{figure}
      \centering
@@ -136,9 +136,9 @@ AppElastic algorithm class maintains virtual machine as list of objects. This is
 \end{itemize}
 Reserved instances and on-demand instances has different billing period requirements. Hence reserved instances instances billing period will the entire life time of the simulation. And on-demand instances are billed as per the instance hour. As shown in the object diagram AppElastic object support two operations. The operation runAppElastic is implementation of AppElastic algorithm from Algorithm~\ref{algo:appelasticwithlookahead}, which does not differentiate between instance types such as reserved instances and on-demand stances. This operation is important in calculating the number of instances needed for a given workload which helps in finding right number of reserved instances.  This method is a generalization of the operation runAppElasticWithRi. The functionality of this operation can be divided into three parts:
 \begin{itemize}
-  \item scale up: Code snippet for this part is as shown in the Listing~\ref{list:appelasticscaleup}. In the first line, getRequestCountsInTimeRange is responsible for lookahead. It reads the predicted workload and returns the list of user request between the current time until the lookahead period. This list of user request is sorted to retrieve the maximum number users accommodate by the VM's. Based on this maximum number of user request, number of VM's required is calculated based on the specified threshold value.  For loop in line 6 is used to find if there are any running instances, this can be implied by the fact that, if a machine is in the active period then it running.
+  \item scale up: Code snippet for this part is as shown in the Listing~\ref{list:appelasticscaleup}. In the first line, getRequestCountsInTimeRange is responsible for lookahead. It reads the predicted workload and returns the list of user requests between the current time until the lookahead period. This list of user requests is sorted to retrieve the maximum number users accommodate by the VM's. Based on this maximum number of user requests, number of VM's required is calculated based on the specified threshold value.  For loop in line 6 is used to find if there are any running instances, this can be implied by the fact that, if a machine is in the active period then it running.
   Based on the number of machines required and machines running, if necessary new machines will be added through the for loop in line 12.  When a VM is created, it gets a new machine ID, the  billingHourStart get the value of current time,  billingHourEnd get the value of billing hour specified as unix timestamp.  StartOfActivePeriod takes the value of current time plus time taken to VM start as specified in configuration. EndOfActivePeriod takes the value based on the time taken to shutdown specified in configuration file.
-  \item scale down:  Code snippet for this part is as shown in the Listing~\ref{list:appelasticscaledown}.  In the first line getRequestCountsInTimeRange is responsible for lookahead. It reads the predicted workload and returns the list of user request between the current time until the lookahead period for scale down. This list of user request is sorted to retrieve the maximum number users accommodate by the VM's. Based on this maximum number of user request, number of VM's required for next billing hours is calculated based on the specified threshold value. One of the main idea behind AppElastic algorithm is killing of the VM's only at the end of the billing cycle. Once the number of machine to shutdown is calculated, the VM's which are ending billing period are identified in the for loop at line 6. If the number of machines required in the next billing period is less than the machines ending billing period then all the VM's ending the billing period is shutdown. This is done in the for loop at line 13. And if the machines required in the next billing cycle is less than number of VM's ending its billing period, then only  a subset of VM's is shutdown. This is done through the loop at line 19.  As said before VM's shutdown is modeled by setting boolean value canExtent at line 23.
+  \item scale down:  Code snippet for this part is as shown in the Listing~\ref{list:appelasticscaledown}.  In the first line getRequestCountsInTimeRange is responsible for lookahead. It reads the predicted workload and returns the list of user requests between the current time until the lookahead period for scale down. This list of user requests is sorted to retrieve the maximum number users accommodate by the VM's. Based on this maximum number of user requests, number of VM's required for next billing hours is calculated based on the specified threshold value. One of the main idea behind AppElastic algorithm is killing of the VM's only at the end of the billing cycle. Once the number of machine to shutdown is calculated, the VM's which are ending billing period are identified in the for loop at line 6. If the number of machines required in the next billing period is less than the machines ending billing period then all the VM's ending the billing period is shutdown. This is done in the for loop at line 13. And if the machines required in the next billing cycle is less than number of VM's ending its billing period, then only  a subset of VM's is shutdown. This is done through the loop at line 19.  As said before VM's shutdown is modeled by setting boolean value canExtent at line 23.
   \item Noscale / extend VM:  Code snippet for this part is as shown in the Listing~\ref{list:appelasticnoscale}.  In the case of no scaling action is taken, it either means the machines are killed or the machines which are running should be kept running for next billing period. This is done by finding the machines which are ending the billing period and extending to the next billing period by setting endOfActtivePeriod and billingHourEndTime. This is achieved in the for loop block in the first line.
 \end{itemize}
 The second operation is implemented as shown in the Listing~\ref{list:appelasticriod}. Main difference between to runAppElastic method is that, it differentiate between reserved instances and on-demand instances. The reserved instances are never shutdown and its kept running until the end of simulation.
@@ -244,9 +244,9 @@ A very important property to define when introducing a new algorithm is its corr
   \end{equation}
 \end{itemize}
 
-On the correct execution of AppElastic algorithm, above said conditions has to be fulfilled. To show whether AppElastic meets the first condition, Figure~\ref{figure:billingactivescaleup} and Figure~\ref{figure:billingactivescaledown} are presented. In these figures red dotted lines represents the input workload trace, blue line show VM's which are billing and green line shows these VM's which are active for user request. From Figure~\ref{figure:billingactivescaleup} its evident that AppElastic algorithm consider the delay in starting the VM. As its shows, VM's starts billing at 01:02 hours and VM will be active to serve users 5 minutes after at time 01:07 hours. Similarly, from Figure~\ref{figure:billingactivescaledown} its also evident that AppElastic algorithm consider the delay in shutting down of VM's. As shown, VM's stops being active for users at 11:52 hours and VM will ends billing at 12:02 hours.
+On the correct execution of AppElastic algorithm, above said conditions has to be fulfilled. To show whether AppElastic meets the first condition, Figure~\ref{figure:billingactivescaleup} and Figure~\ref{figure:billingactivescaledown} are presented. In these figures red dotted lines represents the input workload trace, blue line show VM's which are billing and green line shows these VM's which are active for user requests. From Figure~\ref{figure:billingactivescaleup} its evident that AppElastic algorithm consider the delay in starting the VM. As its shows, VM's starts billing at 01:02 hours and VM will be active to serve users 5 minutes after at time 01:07 hours. Similarly, from Figure~\ref{figure:billingactivescaledown} its also evident that AppElastic algorithm consider the delay in shutting down of VM's. As shown, VM's stops being active for users at 11:52 hours and VM will ends billing at 12:02 hours.
 \\
-Figure~\ref{figure:appelasticapplication} shows how VM's are scaled up/down based on the variation in the workload. Red dotted lines represents the input workload trace and the green line show the capacity of active VM's serving the workload. Axis on the right hand side denotes the number of VM's being actively serving these request. From the Figures~\ref{fig:appelasticperformance}, AppElastic algorithm always create VM's such that its capacity green line is alway above the red line user requests. With these two properties, we proved that AppElastic algorithm perform scaling operation as per its requirements.
+Figure~\ref{figure:appelasticapplication} shows how VM's are scaled up/down based on the variation in the workload. Red dotted lines represents the input workload trace and the green line show the capacity of active VM's serving the workload. Axis on the right hand side denotes the number of VM's being actively serving these requests. From the Figures~\ref{fig:appelasticperformance}, AppElastic algorithm always create VM's such that its capacity green line is alway above the red line user requests. With these two properties, we proved that AppElastic algorithm perform scaling operation as per its requirements.
 
 \begin{figure}
      \centering
@@ -268,25 +268,25 @@ Figure~\ref{figure:appelasticapplication} shows how VM's are scaled up/down base
      \centering
      \begin{subfigure}[b]{0.4\textwidth}
          \includegraphics[width=\textwidth]{autoscalingdiag1.png}
-         \caption{Increase in user request}
+         \caption{Increase in user requests}
          \label{figure:autoscalingdiag1}
      \end{subfigure}
       \hfill
      \begin{subfigure}[b]{0.4\textwidth}
          \includegraphics[width=\textwidth]{autoscalingdiag2.png}
-         \caption{Rapid change in user request}
+         \caption{Rapid change in user requests}
          \label{figure:autoscalingdiag2}
      \end{subfigure}
      \vskip\baselineskip
      \begin{subfigure}[b]{0.4\textwidth}
          \includegraphics[width=\textwidth]{autoscalingdiag3.png}
-         \caption{Decreasing in user request}
+         \caption{Decreasing in user requests}
          \label{figure:autoscalingdiag3}
      \end{subfigure}
       \hfill
      \begin{subfigure}[b]{0.4\textwidth}
          \includegraphics[width=\textwidth]{autoscalingdiag4.png}
-         \caption{Decreasing in user request}
+         \caption{Decreasing in user requests}
          \label{figure:autoscalingdiag4}
      \end{subfigure}
      \caption{AppElastic Performace on Workload}
@@ -295,7 +295,7 @@ Figure~\ref{figure:appelasticapplication} shows how VM's are scaled up/down base
 
 \subsection{Forecast Accuracy}
 \label{sub:Forecast Accuracy}
-As discussed in the previous chapter, automated ARIMA model is used to forecast two type of data. These forecast data aids AppElastic for scale up lookahead and scale down lookahead features. Figure~\ref{fig:forecast} show the forecast plot of actual number of user request along with forecasted values. Based on the forecast horizon specified in ElasticSim configuration, forecasts are produced for scale up in Figure~\ref{figure:forecastscaleup} and for scale down as shown in Figure~\ref{figure:forecastscaledown}. As introduced in section~\ref{sec:implementationprediction} percentage error is used to measured the accuracy. MAPE Percentage errors have the advantage of being scale-independent, and frequently used to compare forecast performance between different data sets. Box plot of forecast errors are as shown in Figure~\ref{fig:forecasterror}. Using automated ARIMA modeling building with R \(auto.arima()\) function has produced forecast with mean error of 1.5\% in both scale up and scale down forecasts. In section~\ref{sub:SLA violation}, how this error in forecast model affects the SLA is presented.
+As discussed in the previous chapter, automated ARIMA model is used to forecast two type of data. These forecast data aids AppElastic for scale up lookahead and scale down lookahead features. Figure~\ref{fig:forecast} show the forecast plot of actual number of user requests along with forecasted values. Based on the forecast horizon specified in ElasticSim configuration, forecasts are produced for scale up in Figure~\ref{figure:forecastscaleup} and for scale down as shown in Figure~\ref{figure:forecastscaledown}. As introduced in section~\ref{sec:implementationprediction} percentage error is used to measured the accuracy. MAPE Percentage errors have the advantage of being scale-independent, and frequently used to compare forecast performance between different data sets. Box plot of forecast errors are as shown in Figure~\ref{fig:forecasterror}. Using automated ARIMA modeling building with R \(auto.arima()\) function has produced forecast with mean error of 1.5\% in both scale up and scale down forecasts. In section~\ref{sub:SLA violation}, how this error in forecast model affects the SLA is presented.
 \begin{figure}
      \centering
      \begin{subfigure}[b]{0.9\textwidth}
@@ -329,20 +329,23 @@ As discussed in the previous chapter, automated ARIMA model is used to forecast 
 \end{figure}
 \subsection{SLA violation}
 \label{sub:SLA violation}
-As discussed in previous section, AppElastic algorithm will run on the predicted workloads which is generated by ARIMA model. As it was clear form the previous section, ARIMA model has forecast error of 1.5\% in both scale up and scale down forecasts. These forecast error leads to SLA violations\footnote{Refer section~\ref{sec:SLA Violations}}. Figure~\ref{fig:forecasterror} some examples of SLA violation due to forecast error. Its evident from the Figure~\ref{fig:forecasterror}, the capacity of provisioned VM's falls short to support user request, hence some of the user request falls above the green line. Equation~\ref{eq:userslavio} is used to calculate how many of these users face SLA violation and have degraded quality of services or no service. As show in the case analysis~\ref{eq:slaviocase}, SLA violation will occur when the required number of VM's to fulfill user requests is more than number of VM's active. These SLA violation is evident from the experiments conducted and the graphs related to these SLA violations are in Figure~\ref{fig:slaviolationgraphs}. As its show in the Figure~\ref{figure:slaviolation1} and Figure~\ref{figure:slaviolation2}, number of VM's active in some parts of the graph are less than the number of user requests arriving to the system. Figure~\ref{figure:boxplotslaviolation} the boxplot of number of users for which SLA is violated. Based on the experiments up to 168 users has faced SLA violation. To mitigate this problem of SLA violation, the AppElastic algorithm can be further extended to provision more machines in case of rapid increase in workloads. In this case, if AppElastic is configured to provision two more machines which can accommodate 240 users, SLA violation can be totally solved.
-\begin{equation}
-\textrm{ Identify SLA Violations }=
-  \begin{cases}
-    VM_{required} - VM_{active} < 0 \textrm{ No SLA violation}\\
-    VM_{required} - VM_{active} = 0 \textrm{ No SLA violation}\\
-    VM_{required} - VM_{active} > 1 \textrm{ SLA violation}\\
-\end{cases}
-\label{eq:slaviocase}
-\end{equation}
+As discussed in previous section, AppElastic algorithm will run on the predicted workloads which is generated by ARIMA model. As it was clear form the previous section, ARIMA model has forecast error of 1.5\% in both scale up and scale down forecasts. These forecast error leads to SLA violations\footnote{Refer section~\ref{sec:SLA Violations}}. Figure~\ref{fig:forecasterror} some examples of SLA violation due to forecast error. Its evident from the Figure~\ref{fig:forecasterror}, the capacity of provisioned VM's falls short to support user requests, hence some of the user requests falls above the green line. Equation~\ref{eq:userslavio} is used to calculate how many of these users face SLA violation and have degraded quality of services or no service. As show in the case analysis~\ref{eq:slaviocase}, SLA violation will occur when the required number of VM's is more than number of VM's active. These SLA violation is evident from the experiments conducted and the graphs related to these SLA violations are in Figure~\ref{fig:slaviolationgraphs}. As its show in the Figure~\ref{figure:slaviolation1} and Figure~\ref{figure:slaviolation2}, number of VM's active in some parts of the graph are less than the number of user requests arriving to the system. Figure~\ref{figure:boxplotslaviolation} the boxplot of number of users for which SLA is violated. Based on the experiments up to 168 users has faced SLA violation. To mitigate this problem of SLA violation, the AppElastic algorithm can be further extended to provision more machines in case of rapid increase in workloads. In this case, if AppElastic is configured to provision two more machines which can accommodate 240 users, SLA violation can be totally solved.
+
 \begin{equation}
 Users_{\textrm{SLA violation}} = UserRequest_{t} - Capaticy_{t}
 \label{eq:userslavio}
 \end{equation}
+
+\begin{equation}
+\textrm{ Identify SLA Violations }=
+  \begin{cases}
+    UserRequest_{t} - Capaticy_{t} < 0 \textrm{ No SLA violation}\\
+    UserRequest_{t} - Capaticy_{t} = 0 \textrm{ No SLA violation}\\
+    UserRequest_{t} - Capaticy_{t} > 1 \textrm{ SLA violation}\\
+\end{cases}
+\label{eq:slaviocase}
+\end{equation}
+
 \begin{figure}
      \centering
      \begin{subfigure}[b]{0.45\textwidth}

@@ -3,7 +3,7 @@ As it was stated in the introduction chapter of Section 1.1, the major research 
 The proposed AppElastic algorithm is explained in three folds. First in Section~\ref{sub:AppElastic without look-ahead} an algorithm is developed as reactive provisioning solution to meet the SLA requirements for any workload. Next in Section~\ref{sub:AppElastic with look-ahead} algorithm is extended to provide a proactive scaling to solve the problem with VM provisioning latency. Finally, at the end of the Section~\ref{sub:AppElastic with look-ahead} complete AppElastic algorithm is presented.
 \section{Assumptions and Limitations}
 \label{sec:Assumptions and Limitations}
-It is safe to assume that software monitoring services  such as Nagios~\cite{josephsen2007building} is able to monitor constantly and report the workload as user request arrive to the system. In this case time series forecast system can be applied to predict future workload points. Concerning the approach taken in this thesis, the input to time series based forecasting strategy assumes to be a time series of number of user requests arriving to the system. The time series forecasting mentioned in the following section is not meant to be applied on resource utilization, response time or any other throughput values.
+It is safe to assume that software monitoring services  such as Nagios~\cite{josephsen2007building} is able to monitor constantly and report the workload as user requests arrives to the system. In this case time series forecast system can be applied to predict future workload points. Concerning the approach taken in this thesis, the input to time series based forecasting strategy assumes to be a time series of number of user requests arriving to the system. The time series forecasting mentioned in the following section is not meant to be applied on resource utilization, response time or any other throughput values.
 \\
 Going further in this thesis Amazon AWS is considered as a cloud service provider. As it was presented in table~\ref{table:cost}, Amazon AWS provides two types of instances, pay-per-use on-demand instances(ODI) and one-time/partial prepaid reserved instances(RI). These various instance purchasing option and cost model is used as an example in this thesis.
 \\
@@ -23,7 +23,7 @@ In this section AppElastic algorithm is introduced without the feature of worklo
 \\
 As it was defined, AppElastic algorithm is based on threshold based rules. AppElastic algorithm takes number of user session per VM instance as threshold specified by the parameter \( U_{i} \). This threshold is used for triggering scaling of VM. This threshold is determined by QoS demand requirements as per SLA. The pseudo code of the algorithm is given in \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead}. Output values from  \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead} are as shown in Table~\ref{table:outputtable}. It give two type of output, one is the usage of each VM instance through $VM_{usage}^{i}$ and cost associated with this usage in $VM_{cost}^{i}$. Algorithm is started after application is deployed and keeps running until application is completed. Scaleup is triggered when it observe the user requests growing above the specified threshold or scale down if the billing period of VM is ending and number of user session are below specified threshold.
 \\
-The algorithm applies an automatic reactive scaling mechanism similar to mechanisms applied by Amazon Auto Scale and Rightscale\cite{han2012lightweight}. The threshold based scaling need no prior knowledge about the application. Each time VM instances are scaled its load balancing server automatically redistributes incoming user request to new created instances\cite{han2012lightweight}. This algorithm tries to provide best service for all of its application users by creating as much VM instances needed. This algorithm is effected by the VM startup time, since there is an overhead in VM startup time, VM's cannot be made available by the scaling algorithm to the application users. As show in the Figure~\ref{fig:slaviolationfig}, due to a sudden increase in incoming user requests the scaling algorithm starts adding new machines, since VM has considerable startup time users were not served at this time and SLA is violated by not providing the service. This is evident from the Figure~\ref{figure:slavioa} and Figure~\ref{figure:slaviob}, number of VM's available to serve the user request are inadequate hence user request red dotted line does not fall under VM's capacity blue line. To solve this problem, we need a mechanism to predict user request for certain period, so that algorithm can look-ahead in time and add new VM instances which server all upcoming user requests without violating SLA.
+The algorithm applies an automatic reactive scaling mechanism similar to mechanisms applied by Amazon Auto Scale and Rightscale\cite{han2012lightweight}. The threshold based scaling need no prior knowledge about the application. Each time VM instances are scaled its load balancing server automatically redistributes incoming user requests to new created instances\cite{han2012lightweight}. This algorithm tries to provide best service for all of its application users by creating as much VM instances needed. This algorithm is effected by the VM startup time, since there is an overhead in VM startup time, VM's cannot be made available by the scaling algorithm to the application users. As show in the Figure~\ref{fig:slaviolationfig}, due to a sudden increase in incoming user requests the scaling algorithm starts adding new machines, since VM has considerable startup time users were not served at this time and SLA is violated by not providing the service. This is evident from the Figure~\ref{figure:slavioa} and Figure~\ref{figure:slaviob}, number of VM's available to serve the user requests are inadequate hence user requests red dotted line does not fall under VM's capacity blue line. To solve this problem, we need a mechanism to predict user requests for certain period, so that algorithm can look-ahead in time and add new VM instances which server all upcoming user requests without violating SLA.
 
 \RestyleAlgo{boxruled}
 \LinesNumbered
@@ -31,7 +31,7 @@ The algorithm applies an automatic reactive scaling mechanism similar to mechani
  \KwIn{  \( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \)}
  \KwOut{$VM_{usage}^{i}$, $VM_{cost}^{i}$}
  \While{until application is active}{
-  \tcc{user request \( r_{i} \) at time \(t_{i}\)}
+  \tcc{user requests \( r_{i} \) at time \(t_{i}\)}
   \(r_{i}  \) = getUserRequest()\;
   \tcc{machines \( n_{i} \) required at time \( t_{i} \)}
   \( n_{i} = r_{i} / U_{i} \)\;
@@ -98,7 +98,7 @@ To forecast the workload, the model developed above is used for prediction with 
     \begin{tabular}{ | L{5cm} | L{5cm} |}
       \hline
       Parameter & Description \\ \hline
-      Time series & Number of user request as time series data \\ \hline
+      Time series & Number of user requests as time series data \\ \hline
       Forecast Interval & A positive integer \(i\). Every \(i\) minutes new time series points in the time series arrivals and a forecast will be triggered. \\ \hline
       Forecast Horizon & Positive integer values quantifying the number of time series points to forecast.  \\ \hline
       Confidence Level(optional)  & An interval \([0,100)\) for forecast confidence.\\ \hline
@@ -115,9 +115,9 @@ To forecast the workload, the model developed above is used for prediction with 
  \KwOut{Predicted workload for forecast horizon \(horizon\) every forecast interval \(i\)}
  initialize \(R\) software, \(forecast\) library \;
  \While{until application is active and every \(i\) intervals}{
-  \tcc{user request time series \( t_{i} \)}
+  \tcc{user requests time series \( t_{i} \)}
   \tcc{using \(R\) software and package \(forecast\)}
-  \( t_{i} \) = get new user request \;
+  \( t_{i} \) = get new user requests \;
   model = \(auto.arima(t_{i})\)\;
   forecastdata = \(forecast(t_{i}), h=horizon\)\;
   write forecast data to file \;
@@ -129,7 +129,7 @@ To forecast the workload, the model developed above is used for prediction with 
 
 \subsubsection{AppElastic with Look-ahead}
 \label{subs:AppElastic with Look-ahead}
-As discussion in the previous section, VM startup time effects the SLA due to the fact that VM newly created takes time to start and  it is not immediately available for the application users. To mitigated this effect, a look in to the future workload could help in provisioning the VM before hand. The forecasting of user request workload discussed before will be used to forecast future workloads so that AppElastic algorithm has capability to look ahead and scale the VM instances. \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead} presented in previous section is extended to have lookahead feature. This extended algorithm is as shown in  \textit{Algorithm}~\ref{algo:appelasticwithlookahead}. Compared to  \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead}, \textit{Algorithm}~\ref{algo:appelasticwithlookahead} takes two additional parameter as described in Table~\ref{table:algo2paratable}. The parameter \( Lookahead_{scaleup} \) is an integer value used for lookahead in future workload for scaling  up. The threshold for scale up is modified according to this value. The scaleup threshold is calculated based on the maximum users in the forecast interval \( Lookahead_{scaleup} \). This is done to include all the user in the forecast interval and to make sure there are no SLA violations. Parameter \( Lookahead_{scaledown} \) is also an integer value used for lookahead in future workload while scaling down. These values are adjusted based on the VM startup and shutdown times. Even though users of this algorithm are free to choose any value, it is recommended in this thesis to use VM startup time for \( Lookahead_{scaleup} \) and VM shutdown+startup time for \( Lookahead_{scaledown} \). When VM startup time is used for scaleup, the autoscaling algorithm will lookahead for that duration and make the VM available for upcoming workload. Furthermore, scale down lookahead will helps in avoiding rapid VM starting and stopping by AppElastic algorithm. VM's which are already running will be extended to next billing cycle and reuse the already started VM instances.
+As discussion in the previous section, VM startup time effects the SLA due to the fact that VM newly created takes time to start and  it is not immediately available for the application users. To mitigated this effect, a look in to the future workload could help in provisioning the VM before hand. The forecasting of user requests workload discussed before will be used to forecast future workloads so that AppElastic algorithm has capability to look ahead and scale the VM instances. \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead} presented in previous section is extended to have lookahead feature. This extended algorithm is as shown in  \textit{Algorithm}~\ref{algo:appelasticwithlookahead}. Compared to  \textit{Algorithm}~\ref{algo:appelasticwithoutlookahead}, \textit{Algorithm}~\ref{algo:appelasticwithlookahead} takes two additional parameter as described in Table~\ref{table:algo2paratable}. The parameter \( Lookahead_{scaleup} \) is an integer value used for lookahead in future workload for scaling  up. The threshold for scale up is modified according to this value. The scaleup threshold is calculated based on the maximum users in the forecast interval \( Lookahead_{scaleup} \). This is done to include all the user in the forecast interval and to make sure there are no SLA violations. Parameter \( Lookahead_{scaledown} \) is also an integer value used for lookahead in future workload while scaling down. These values are adjusted based on the VM startup and shutdown times. Even though users of this algorithm are free to choose any value, it is recommended in this thesis to use VM startup time for \( Lookahead_{scaleup} \) and VM shutdown+startup time for \( Lookahead_{scaledown} \). When VM startup time is used for scaleup, the autoscaling algorithm will lookahead for that duration and make the VM available for upcoming workload. Furthermore, scale down lookahead will helps in avoiding rapid VM starting and stopping by AppElastic algorithm. VM's which are already running will be extended to next billing cycle and reuse the already started VM instances.
 
 
 \begin{flushleft}
@@ -253,7 +253,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
   \KwIn{\( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \), \( Lookahead_{scaleup} \), \( Lookahead_{scaledown}\)}
   \KwOut{$VM_{usage}^{i}$,$VM_{cost}^{i}$}
   \While{until application is active}{
-   \tcc{Get perdicted user request \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
+   \tcc{Get perdicted user requests \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
    \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaleup}\)))\;
    \tcc{new machines \( n_{i} \) required in the interval \(Lookahead_{scaleup}\)}
    \( n_{i} = r_{i} / U_{i} \)\;
@@ -268,7 +268,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
      }
     }
     \uElseIf{\( n_{i} < m_{i} \)}{
-    \tcc{Get predicted user request \( r_{i} \) in the time interval \(Lookahead_{scaledown}\) to check if machines can be extended billing period}
+    \tcc{Get predicted user requests \( r_{i} \) in the time interval \(Lookahead_{scaledown}\) to check if machines can be extended billing period}
     \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaledown}\)))\;
     \( n_{i} = r_{i} / U_{i} \)\;
     \(machinesToShutdown =  m_{i} - n_{i}\)\;
@@ -286,7 +286,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
    \KwIn{\( U_{i} \),\( B_{p} \),\( T_{start} \),\( T_{shutdown} \), \( Lookahead_{scaleup} \), \( Lookahead_{scaledown}\), \( Cost_{ri}\), \(Cost_{odi}\), \(Count_{ri}\)}
    \KwOut{$VM_{usage}^{i}$,$VM_{cost}^{i}$,$Total_{cost}^{ri}$,$Total_{cost}^{odi}$}
    \While{until application is active}{
-    \tcc{Get perdicted user request \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
+    \tcc{Get perdicted user requests \( r_{i} \) in the time interval \(Lookahead_{scaleup} \)}
     \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaleup}\)))\;
     \tcc{new machines \( n_{i} \) required in the interval \(Lookahead_{scaleup}\)}
     \( n_{i} = (r_{i} / U_{i}) - Count_{ri} \)\;
@@ -301,7 +301,7 @@ Until now, AppElastic algorithm was discussed based on the scalability perspecti
       }
      }
      \uElseIf{\( n_{i} < m_{i} \)}{
-     \tcc{Get predicted user request \( r_{i} \) in the time interval \(Lookahead_{scaledown}\).}
+     \tcc{Get predicted user requests \( r_{i} \) in the time interval \(Lookahead_{scaledown}\).}
      \(r_{i}\) = \(max\)(getPredictedUserRequest(\(Lookahead_{scaledown}\)))\;
      \( n_{i} =  (r_{i} / U_{i}) - Count_{ri} \)\;
      \(machinesToShutdown =  m_{i} - n_{i}\)\;
