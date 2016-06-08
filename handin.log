@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.25)  8 JUN 2016 08:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.12.25)  8 JUN 2016 09:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -942,62 +942,59 @@ Overfull \hbox (0.79999pt too wide) detected at line 56
 |[]|
  []
 
-
-LaTeX Warning: Reference `' on page 30 undefined on input line 91.
-
 [30] [31]
 Overfull \hbox (0.79999pt too wide) detected at line 128
 |[]|
  []
 
-
-Overfull \hbox (0.79999pt too wide) detected at line 164
+[32] [33]
+Overfull \hbox (0.79999pt too wide) detected at line 186
 |[]|
  []
 
-[32] [33] [34]
-Overfull \hbox (0.79999pt too wide) detected at line 217
-|[]|
- []
-
-[35] <images/CompleteWorkload.png, id=815, 3513.125pt x 2509.375pt>
+[34] <images/CompleteWorkload.png, id=799, 3513.125pt x 2509.375pt>
 File: images/CompleteWorkload.png Graphic file (type png)
  <use images/CompleteWorkload.png>
-Package pdftex.def Info: images/CompleteWorkload.png used on input line 222.
+Package pdftex.def Info: images/CompleteWorkload.png used on input line 191.
 (pdftex.def)             Requested size: 272.99881pt x 194.97232pt.
- <images/CompleteWithForecast.png, id=816, 3513.125pt x 2509.375pt>
+ <images/CompleteWithForecast.png, id=800, 3513.125pt x 2509.375pt>
 File: images/CompleteWithForecast.png Graphic file (type png)
  <use images/CompleteWithForecast.png>
-Package pdftex.def Info: images/CompleteWithForecast.png used on input line 227.
+Package pdftex.def Info: images/CompleteWithForecast.png used on input line 196.
 (pdftex.def)             Requested size: 272.99881pt x 194.97232pt.
- [36] <images/slaviolationfront.png, id=824, 3011.25pt x 3011.25pt>
+ [35] <images/slaviolationfront.png, id=805, 3011.25pt x 3011.25pt>
 File: images/slaviolationfront.png Graphic file (type png)
  <use images/slaviolationfront.png>
-Package pdftex.def Info: images/slaviolationfront.png used on input line 237.
+Package pdftex.def Info: images/slaviolationfront.png used on input line 206.
 (pdftex.def)             Requested size: 234.00238pt x 233.96678pt.
- <images/slaviolationlast.png, id=825, 3011.25pt x 3011.25pt>
+ <images/slaviolationlast.png, id=806, 3011.25pt x 3011.25pt>
 File: images/slaviolationlast.png Graphic file (type png)
  <use images/slaviolationlast.png>
-Package pdftex.def Info: images/slaviolationlast.png used on input line 242.
+Package pdftex.def Info: images/slaviolationlast.png used on input line 211.
 (pdftex.def)             Requested size: 234.00238pt x 233.96678pt.
- [37] [38 <./images/CompleteWorkload.png> <./images/CompleteWithForecast.png>] [39 <./images/slaviolationfront.png> <./images/slaviolationlast.png>] [40] <images/ElasticSim.png, id=874, 703.62875pt x 565.11125pt>
+ [36] [37 <./images/CompleteWorkload.png> <./images/CompleteWithForecast.png>] [38 <./images/slaviolationfront.png> <./images/slaviolationlast.png>] [39] <images/ElasticSim.png, id=855, 703.62875pt x 565.11125pt>
 File: images/ElasticSim.png Graphic file (type png)
  <use images/ElasticSim.png>
-Package pdftex.def Info: images/ElasticSim.png used on input line 281.
+Package pdftex.def Info: images/ElasticSim.png used on input line 250.
 (pdftex.def)             Requested size: 422.18051pt x 339.06937pt.
 
-Overfull \hbox (32.18051pt too wide) in paragraph at lines 281--282
+Overfull \hbox (32.18051pt too wide) in paragraph at lines 250--251
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [41] [42 <./images/ElasticSim.png>]
-Chapter 5.
-(./Chapters/chapter5.tex [43
 
-] <images/simwelcome.png, id=899, 656.4525pt x 127.47626pt>
+Overfull \hbox (0.79999pt too wide) detected at line 287
+|[]|
+ []
+
+[40] [41 <./images/ElasticSim.png>] [42]) [43]
+Chapter 5.
+(./Chapters/chapter5.tex [44
+
+] <images/simwelcome.png, id=904, 656.4525pt x 127.47626pt>
 File: images/simwelcome.png Graphic file (type png)
  <use images/simwelcome.png>
 Package pdftex.def Info: images/simwelcome.png used on input line 24.
@@ -1007,7 +1004,7 @@ Overfull \hbox (3.87454pt too wide) in paragraph at lines 24--25
  [] 
  []
 
-[44 <./images/simwelcome.png>]
+[45 <./images/simwelcome.png>]
 Overfull \hbox (63.62512pt too wide) in paragraph at lines 35--36
 \OT1/cmr/m/n/12 is con-fig-ured through the vari-able VM[]START[]TIME and VM[]SHUTDOWN[]TIME
  []
@@ -1032,7 +1029,7 @@ Overfull \hbox (6.06429pt too wide) in paragraph at lines 38--39
 \OT1/cmr/m/n/12 are con-fig-ured through vari-ables FORE-CAST[]SCALEUP[]WORKLOAD
  []
 
-<images/simconfig.png, id=914, 489.83pt x 274.02374pt>
+<images/simconfig.png, id=919, 489.83pt x 274.02374pt>
 File: images/simconfig.png Graphic file (type png)
  <use images/simconfig.png>
 Package pdftex.def Info: images/simconfig.png used on input line 44.
@@ -1041,12 +1038,12 @@ Package pdftex.def Info: images/simconfig.png used on input line 44.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[45] <images/billinglog.png, id=924, 697.60625pt x 70.2625pt>
+[46] <images/billinglog.png, id=930, 697.60625pt x 70.2625pt>
 File: images/billinglog.png Graphic file (type png)
  <use images/billinglog.png>
 Package pdftex.def Info: images/billinglog.png used on input line 60.
 (pdftex.def)             Requested size: 390.0pt x 39.28024pt.
- <images/simlog.png, id=925, 491.8375pt x 107.40125pt>
+ <images/simlog.png, id=931, 491.8375pt x 107.40125pt>
 File: images/simlog.png Graphic file (type png)
  <use images/simlog.png>
 Package pdftex.def Info: images/simlog.png used on input line 65.
@@ -1057,7 +1054,7 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 File: lstlang2.sty 2015/06/04 1.6 listings language file
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2015/06/04 1.6 listings language file
-) [46 <./images/simconfig.png>] [47 <./images/billinglog.png> <./images/simlog.png>]
+) [47 <./images/simconfig.png>] [48 <./images/billinglog.png> <./images/simlog.png>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 75.
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 78.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
@@ -1067,7 +1064,7 @@ LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <10.95> not available
 (Font)              Font shape `OML/cmm/b/it' tried instead on input line 78.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 86.
- [48] <images/scaling.png, id=975, 504.88625pt x 238.8925pt>
+ [49] <images/scaling.png, id=980, 504.88625pt x 238.8925pt>
 File: images/scaling.png Graphic file (type png)
  <use images/scaling.png>
 Package pdftex.def Info: images/scaling.png used on input line 110.
@@ -1076,17 +1073,17 @@ Package pdftex.def Info: images/scaling.png used on input line 110.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/objdiag.png, id=977, 514.92375pt x 118.4425pt>
+<images/objdiag.png, id=982, 514.92375pt x 118.4425pt>
 File: images/objdiag.png Graphic file (type png)
  <use images/objdiag.png>
 Package pdftex.def Info: images/objdiag.png used on input line 118.
 (pdftex.def)             Requested size: 360.44417pt x 82.90916pt.
- [49] [50 <./images/scaling.png> <./images/objdiag.png>] [51] [52] (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
+ [50] [51 <./images/scaling.png> <./images/objdiag.png>] [52] [53] (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 146.
- [53] [54]
+ [54] [55]
 Overfull \hbox (41.3718pt too wide) in paragraph at lines 218--219
 [][] 
  []
@@ -1103,7 +1100,7 @@ Overfull \hbox (11.52353pt too wide) in paragraph at lines 225--226
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/highlevelvmscaling.png, id=1070, 4015.0pt x 2509.375pt>
+<images/highlevelvmscaling.png, id=1075, 4015.0pt x 2509.375pt>
 File: images/highlevelvmscaling.png Graphic file (type png)
  <use images/highlevelvmscaling.png>
 Package pdftex.def Info: images/highlevelvmscaling.png used on input line 232.
@@ -1116,12 +1113,12 @@ Overfull \hbox (11.52353pt too wide) in paragraph at lines 232--233
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[55] [56] <images/autoscalingdiagscaleup.png, id=1089, 3513.125pt x 2509.375pt>
+[56] [57] <images/autoscalingdiagscaleup.png, id=1094, 3513.125pt x 2509.375pt>
 File: images/autoscalingdiagscaleup.png Graphic file (type png)
  <use images/autoscalingdiagscaleup.png>
 Package pdftex.def Info: images/autoscalingdiagscaleup.png used on input line 253.
 (pdftex.def)             Requested size: 390.0pt x 278.55923pt.
- <images/autoscalingdiagscaledown.png, id=1090, 3513.125pt x 2509.375pt>
+ <images/autoscalingdiagscaledown.png, id=1095, 3513.125pt x 2509.375pt>
 File: images/autoscalingdiagscaledown.png Graphic file (type png)
  <use images/autoscalingdiagscaledown.png>
 Package pdftex.def Info: images/autoscalingdiagscaledown.png used on input line 258.
@@ -1130,32 +1127,32 @@ Package pdftex.def Info: images/autoscalingdiagscaledown.png used on input line 
 
 LaTeX Warning: Float too large for page by 45.44337pt on input line 264.
 
-[57 <./images/highlevelvmscaling.png>] <images/autoscalingdiag1.png, id=1099, 2509.375pt x 2509.375pt>
+[58 <./images/highlevelvmscaling.png>] <images/autoscalingdiag1.png, id=1105, 2509.375pt x 2509.375pt>
 File: images/autoscalingdiag1.png Graphic file (type png)
  <use images/autoscalingdiag1.png>
 Package pdftex.def Info: images/autoscalingdiag1.png used on input line 269.
 (pdftex.def)             Requested size: 155.99762pt x 155.99316pt.
- <images/autoscalingdiag2.png, id=1100, 2509.375pt x 2509.375pt>
+ <images/autoscalingdiag2.png, id=1106, 2509.375pt x 2509.375pt>
 File: images/autoscalingdiag2.png Graphic file (type png)
  <use images/autoscalingdiag2.png>
 Package pdftex.def Info: images/autoscalingdiag2.png used on input line 275.
 (pdftex.def)             Requested size: 155.99762pt x 155.99316pt.
- <images/autoscalingdiag3.png, id=1101, 2509.375pt x 2509.375pt>
+ <images/autoscalingdiag3.png, id=1107, 2509.375pt x 2509.375pt>
 File: images/autoscalingdiag3.png Graphic file (type png)
  <use images/autoscalingdiag3.png>
 Package pdftex.def Info: images/autoscalingdiag3.png used on input line 281.
 (pdftex.def)             Requested size: 155.99762pt x 155.99316pt.
- <images/autoscalingdiag4.png, id=1102, 2509.375pt x 2509.375pt>
+ <images/autoscalingdiag4.png, id=1108, 2509.375pt x 2509.375pt>
 File: images/autoscalingdiag4.png Graphic file (type png)
  <use images/autoscalingdiag4.png>
 Package pdftex.def Info: images/autoscalingdiag4.png used on input line 287.
 (pdftex.def)             Requested size: 155.99762pt x 155.99316pt.
- <images/ScaleUpForecast.png, id=1108, 3513.125pt x 2509.375pt>
+ <images/ScaleUpForecast.png, id=1114, 3513.125pt x 2509.375pt>
 File: images/ScaleUpForecast.png Graphic file (type png)
  <use images/ScaleUpForecast.png>
 Package pdftex.def Info: images/ScaleUpForecast.png used on input line 301.
 (pdftex.def)             Requested size: 350.99762pt x 250.68417pt.
- <images/ScaleDownForecast.png, id=1109, 3513.125pt x 2509.375pt>
+ <images/ScaleDownForecast.png, id=1115, 3513.125pt x 2509.375pt>
 File: images/ScaleDownForecast.png Graphic file (type png)
  <use images/ScaleDownForecast.png>
 Package pdftex.def Info: images/ScaleDownForecast.png used on input line 306.
@@ -1164,32 +1161,32 @@ Package pdftex.def Info: images/ScaleDownForecast.png used on input line 306.
 
 LaTeX Warning: Float too large for page by 17.56831pt on input line 312.
 
-<images/ScaleUpAcc.png, id=1110, 2509.375pt x 2509.375pt>
+<images/ScaleUpAcc.png, id=1116, 2509.375pt x 2509.375pt>
 File: images/ScaleUpAcc.png Graphic file (type png)
  <use images/ScaleUpAcc.png>
 Package pdftex.def Info: images/ScaleUpAcc.png used on input line 316.
 (pdftex.def)             Requested size: 175.49881pt x 175.48274pt.
- <images/ScaleDownAcc.png, id=1111, 2509.375pt x 2509.375pt>
+ <images/ScaleDownAcc.png, id=1117, 2509.375pt x 2509.375pt>
 File: images/ScaleDownAcc.png Graphic file (type png)
  <use images/ScaleDownAcc.png>
 Package pdftex.def Info: images/ScaleDownAcc.png used on input line 322.
 (pdftex.def)             Requested size: 175.49881pt x 175.48274pt.
- [58] [59 <./images/autoscalingdiagscaleup.png> <./images/autoscalingdiagscaledown.png>] [60 <./images/autoscalingdiag1.png> <./images/autoscalingdiag2.png> <./images/autoscalingdiag3.png> <./images/autoscalingdiag4.png>] [61 <./images/ScaleUpForecast.png> <./images/ScaleDownForecast.png>]
+ [59] [60 <./images/autoscalingdiagscaleup.png> <./images/autoscalingdiagscaledown.png>] [61 <./images/autoscalingdiag1.png> <./images/autoscalingdiag2.png> <./images/autoscalingdiag3.png> <./images/autoscalingdiag4.png>] [62 <./images/ScaleUpForecast.png> <./images/ScaleDownForecast.png>]
 Overfull \hbox (7.19594pt too wide) detected at line 340
 [] \OT1/cmr/m/n/12 = []
  []
 
-<images/slaviolation1.png, id=1153, 2509.375pt x 2509.375pt>
+<images/slaviolation1.png, id=1158, 2509.375pt x 2509.375pt>
 File: images/slaviolation1.png Graphic file (type png)
  <use images/slaviolation1.png>
 Package pdftex.def Info: images/slaviolation1.png used on input line 348.
 (pdftex.def)             Requested size: 175.49881pt x 175.48274pt.
- <images/slaviolation2.png, id=1154, 2509.375pt x 2509.375pt>
+ <images/slaviolation2.png, id=1159, 2509.375pt x 2509.375pt>
 File: images/slaviolation2.png Graphic file (type png)
  <use images/slaviolation2.png>
 Package pdftex.def Info: images/slaviolation2.png used on input line 354.
 (pdftex.def)             Requested size: 175.49881pt x 175.48274pt.
- <images/boxplotslaviolation.png, id=1155, 2509.375pt x 2509.375pt>
+ <images/boxplotslaviolation.png, id=1160, 2509.375pt x 2509.375pt>
 File: images/boxplotslaviolation.png Graphic file (type png)
  <use images/boxplotslaviolation.png>
 Package pdftex.def Info: images/boxplotslaviolation.png used on input line 364.
@@ -1198,7 +1195,7 @@ Package pdftex.def Info: images/boxplotslaviolation.png used on input line 364.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/purchaseoption.png, id=1160, 6022.5pt x 5018.75pt>
+<images/purchaseoption.png, id=1165, 6022.5pt x 5018.75pt>
 File: images/purchaseoption.png Graphic file (type png)
  <use images/purchaseoption.png>
 Package pdftex.def Info: images/purchaseoption.png used on input line 374.
@@ -1208,30 +1205,30 @@ Overfull \hbox (31.61809pt too wide) in paragraph at lines 374--375
  [] 
  []
 
-[62 <./images/ScaleUpAcc.png> <./images/ScaleDownAcc.png>]
+[63 <./images/ScaleUpAcc.png> <./images/ScaleDownAcc.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [63 <./images/slaviolation1.png> <./images/slaviolation2.png>] [64 <./images/boxplotslaviolation.png>] [65 <./images/purchaseoption.png>]
+) [64 <./images/slaviolation1.png> <./images/slaviolation2.png>] [65 <./images/boxplotslaviolation.png>] [66 <./images/purchaseoption.png>]
 Chapter 6.
-(./Chapters/chapter6.tex [66
+(./Chapters/chapter6.tex [67
 
-] [67] [68]) [69]
+] [68] [69]) [70]
 Chapter 7.
-[70
+[71
 
 ] (./handin.lof)
 \tf@lof=\write6
 \openout6 = `handin.lof'.
 
- [71
+ [72
 
 
 ] (./handin.lot)
 \tf@lot=\write7
 \openout7 = `handin.lot'.
 
- [72
+ [73
 
 
 ] (./handin.bbl
@@ -1259,10 +1256,10 @@ Underfull \hbox (badness 1178) in paragraph at lines 30--33
 []\OT1/cmr/m/n/12 Reinforcement Learn-ing: An In-tro-duc-tion.  []$\OT1/cmtt/m/n/12 http : / / webdocs . cs .
  []
 
-[73
+[74
 
 
-] [74] [75]
+] [75] [76]
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ™ in font cmti12!
@@ -1277,7 +1274,7 @@ Underfull \hbox (badness 3039) in paragraph at lines 243--247
 []\OT1/cmr/m/n/12 VMware.  Vmware esxi.  []$\OT1/cmtt/m/n/12 https : / / www . vmware . com / products /
  []
 
-[76]) [77]
+[77]) [78]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 133.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 133.
  (./handin.aux)
@@ -1285,9 +1282,6 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 133.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 133.
 Package rerunfilecheck Info: File `handin.out' has not changed.
 (rerunfilecheck)             Checksum: 3CD23BFA77A056F55230A168F5E709CE;3255.
-
-
-LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1300,18 +1294,18 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 133.
 ### bottom level 
 Here is how much of TeX's memory you used:
  30007 strings out of 493054
- 636236 string characters out of 6134759
- 795721 words of memory out of 5000000
- 32644 multiletter control sequences out of 15000+600000
+ 636241 string characters out of 6134759
+ 795681 words of memory out of 5000000
+ 32643 multiletter control sequences out of 15000+600000
  16263 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,15n,119p,3022b,18676s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on handin.pdf (86 pages, 5246120 bytes).
+Output written on handin.pdf (87 pages, 5246036 bytes).
 PDF statistics:
- 1474 PDF objects out of 1728 (max. 8388607)
- 1284 compressed objects within 13 object streams
- 407 named destinations out of 1000 (max. 500000)
+ 1479 PDF objects out of 1728 (max. 8388607)
+ 1288 compressed objects within 13 object streams
+ 408 named destinations out of 1000 (max. 500000)
  568 words of extra memory for PDF output out of 10000 (max. 10000000)
 
